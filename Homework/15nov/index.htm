@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>Document</title>
+  </head>
+  <body
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to top left, #4a148c, #c51162);
+    "
+  >
+    <div class="formContainer">
+      <input
+        class="inputText"
+        type="number"
+        name="height"
+        id="height"
+        placeholder="Please enter height"
+        autocomplete="off"
+      />
+      <input
+        type="number"
+        name="weight"
+        id="weight"
+        class="inputText"
+        placeholder="Please enter weight"
+        autocomplete="off"
+      />
+      <input type="submit" value="Calculate" class="button" id="btn" />
+      <div id="result">
+        <!-- <h4 id="result"></h4> -->
+      </div>
+    </div>
+    <!-- create a form for bmi calculator -->
+  </body>
+</html>
