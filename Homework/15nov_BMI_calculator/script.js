@@ -1,7 +1,5 @@
-window.onload = () => {
-  let button = document.querySelector("#btn");
-  button.addEventListener("click", calculateBMI);
-};
+// let button = document.querySelector("#btn");
+// button.addEventListener("click", calculateBMI);
 
 let previousGuesses = [];
 let maxrecord = 5;
@@ -14,6 +12,12 @@ function calculateBMI() {
   let result = document.querySelector("#result");
   let resultt = document.querySelector("#resultt");
 
+  //remove 1st element from previousGuesses if previousGuesses.length > 1
+
+  if (previousGuesses && previousGuesses.length > 10) {
+    previousGuesses.splice(0, 1);
+  }
+
   if (height === "" || isNaN(height))
     result.innerHTML = "Provide a valid Height!";
   else if (weight === "" || isNaN(weight))
@@ -22,7 +26,7 @@ function calculateBMI() {
     // Fixing upto 2 decimal places
     let bmi = (weight / (height * height)).toFixed(2);
     // Dividing as per the bmi conditions
-    resultt.innerHTML = `<span>${previousGuesses}</span>`;
+
     if (bmi < 18.6) {
       result.innerHTML = `Under Weight : <span>${bmi}</span>`;
       previousGuesses.push(bmi);
@@ -34,4 +38,8 @@ function calculateBMI() {
       previousGuesses.push(bmi);
     }
   }
+  resultt.innerHTML = `<span>${previousGuesses}</span>`;
+  height = parseInt((document.querySelector("#height").value = " "));
+
+  weight = parseInt((document.querySelector("#weight").value = " "));
 }
