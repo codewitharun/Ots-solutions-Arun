@@ -24,7 +24,7 @@ function calculateBMI() {
     result.innerHTML = "Provide a valid Weight!";
   else {
     // Fixing upto 2 decimal places
-    let bmi = (weight / (height * height)).toFixed(2);
+    let bmi = (weight / ((height * height) / 10000)).toFixed(2);
     // Dividing as per the bmi conditions
 
     if (bmi < 18.6) {
