@@ -3,6 +3,7 @@ function Student(name, roll, age) {
   this.roll = roll;
   this.age = age;
 }
+_nov;
 
 // const Student = new student();
 Student.name = "Arun Kumar";
@@ -14,8 +15,8 @@ const obj = { name: "Arun", class: "mca", roll: 183 };
 console.log(obj);
 
 const Student2 = new Object();
-Student2.name = "Vishal Maurya";
-Student2.Address = "Gorakhpur";
+Student2.name = "Vishu Kumar";
+Student2.Address = "Patna";
 console.log(Student2);
 
 function final() {
