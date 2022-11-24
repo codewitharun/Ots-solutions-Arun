@@ -1,5 +1,5 @@
 let startBtn = document.getElementById("start");
-let stopBtn = document.getElementById("#spann");
+let stopBtn = document.getElementById("#span");
 let resetBtn = document.getElementById("reset");
 
 let minute = 00;
@@ -13,7 +13,7 @@ function Start() {
   console.log("Started");
   startBtn.removeEventListener("click", Start);
   startBtn.addEventListener("click", Stop);
-  document.getElementById("spann").innerHTML = "Stop";
+  document.getElementById("span").innerHTML = "Stop";
   stopWatch();
 }
 
@@ -22,11 +22,11 @@ function Stop() {
   console.log("Stopped");
   startBtn.removeEventListener("click", Stop);
   startBtn.addEventListener("click", Start);
-  document.getElementById("spann").innerHTML = "Start";
+  document.getElementById("span").innerHTML = "Start";
 }
 function Reset() {
   timer = false;
-  document.getElementById("spann").innerHTML = "Start";
+  document.getElementById("span").innerHTML = "Start";
   startBtn.removeEventListener("click", Stop);
   startBtn.addEventListener("click", Start);
   //   hour = 0;
@@ -51,7 +51,7 @@ function stopWatch() {
 
     if (second == 60) {
       minute++;
-      //   minute = 58; 
+
       second = 0;
     }
 
