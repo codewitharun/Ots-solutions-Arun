@@ -2,7 +2,6 @@ let startBtn = document.getElementById("start");
 let stopBtn = document.getElementById("#spann");
 let resetBtn = document.getElementById("reset");
 
-let hour = 00;
 let minute = 00;
 let second = 00;
 let count = 00;
@@ -24,35 +23,22 @@ function Stop() {
   startBtn.removeEventListener("click", Stop);
   startBtn.addEventListener("click", Start);
   document.getElementById("spann").innerHTML = "Start";
-  //   stopBtn.value = "Start";
 }
 function Reset() {
   timer = false;
   document.getElementById("spann").innerHTML = "Start";
   startBtn.removeEventListener("click", Stop);
   startBtn.addEventListener("click", Start);
-  hour = 0;
+  //   hour = 0;
   minute = 0;
   second = 0;
   count = 0;
-  document.getElementById("hr").innerHTML = "00";
+
   document.getElementById("min").innerHTML = "00";
   document.getElementById("sec").innerHTML = "00";
   document.getElementById("count").innerHTML = "00";
+  console.log("Reset call");
 }
-
-// resetBtn.addEventListener("click", function () {
-//   document.getElementById("spann").innerHTML = "Start";
-//   timer = false;
-//   hour = 0;
-//   minute = 0;
-//   second = 0;
-//   count = 0;
-//   document.getElementById("hr").innerHTML = "00";
-//   document.getElementById("min").innerHTML = "00";
-//   document.getElementById("sec").innerHTML = "00";
-//   document.getElementById("count").innerHTML = "00";
-// });
 
 function stopWatch() {
   if (timer) {
@@ -65,23 +51,17 @@ function stopWatch() {
 
     if (second == 60) {
       minute++;
+      //   minute = 58; 
       second = 0;
     }
 
     if (minute == 60) {
-      hour++;
-      minute = 0;
-      second = 0;
+      Reset();
     }
 
-    let hrString = hour;
     let minString = minute;
     let secString = second;
     let countString = count;
-
-    if (hour < 10) {
-      hrString = "0" + hrString;
-    }
 
     if (minute < 10) {
       minString = "0" + minString;
@@ -95,7 +75,6 @@ function stopWatch() {
       countString = "0" + countString;
     }
 
-    document.getElementById("hr").innerHTML = hrString;
     document.getElementById("min").innerHTML = minString;
     document.getElementById("sec").innerHTML = secString;
     document.getElementById("count").innerHTML = countString;
