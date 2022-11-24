@@ -27,7 +27,7 @@ async function getData() {
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`
     )
       .then((result) => {
-        if (!result.ok) throw new Error("the country has no neighbours.");
+        if (!result.ok) throw new Error("Something went Wrong");
         return result.json();
       })
       .then((data1) => {
