@@ -21,7 +21,6 @@ h1 {
 
 .digit {
     font-size: 150px;
-
     color: #fff;
 }
 
@@ -78,7 +77,6 @@ h1 {
 #stop:hover {
    
     background-color: #0e85fc;
-    color: rgb(10, 139, 238);
       
     
 }
@@ -87,8 +85,4 @@ h1 {
     background-color: #009779;
     /* cursor: pointer; */
 
-}
-
-#demo{
-    color: #0e85fc;
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGB Picker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <h1 id="title">Rgb Color Picker by Arun</h1>
+      <div id="time">
+        <input
+          type="range"
+          name="first"
+          min="0"
+          max="255"
+          class="slider"
+          id="firstSlide"
+          onchange="change(event)"
+          value="0"
+        />
+        <p style="color: white">Red: <span id="Red"></span></p>
+        <input
+          type="range"
+          name="second"
+          min="0"
+          max="255"
+          class="slider"
+          id="secondSlide"
+          onchange="change(event)"
+          value="10"
+        />
+        <p style="color: white">Green: <span id="Green"></span></p>
+        <input
+          type="range"
+          name="third"
+          min="0"
+          max="255"
+          class="slider"
+          id="thirdSlide"
+          onchange="change(event)"
+          value="20"
+        />
+        <p style="color: white">Blue: <span id="Blue"></span></p>
+      </div>
+
+      <div id="buttons">
+        <button class="btn" id="start">
+          <span id="span" style="">Start</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
