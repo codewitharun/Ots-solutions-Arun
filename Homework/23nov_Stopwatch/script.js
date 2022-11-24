@@ -8,37 +8,29 @@ let second = 00;
 let count = 00;
 
 startBtn.addEventListener("click", Start);
-
+resetBtn.addEventListener("click", Reset);
 function Start() {
+  timer = true;
   console.log("Started");
   startBtn.removeEventListener("click", Start);
   startBtn.addEventListener("click", Stop);
-  timer = true;
   document.getElementById("spann").innerHTML = "Stop";
   stopWatch();
 }
 
 function Stop() {
+  timer = false;
   console.log("Stopped");
   startBtn.removeEventListener("click", Stop);
   startBtn.addEventListener("click", Start);
   document.getElementById("spann").innerHTML = "Start";
   //   stopBtn.value = "Start";
-  timer = false;
 }
-
-// startBtn.addEventListener("click", function () {
-//   timer = true;
-//   stopWatch();
-//   document.querySelector("#stop").disabled = false;
-// });
-
-// stopBtn.addEventListener("click", function () {
-//   timer = false;
-// });
-
-resetBtn.addEventListener("click", function () {
+function Reset() {
   timer = false;
+  document.getElementById("spann").innerHTML = "Start";
+  startBtn.removeEventListener("click", Stop);
+  startBtn.addEventListener("click", Start);
   hour = 0;
   minute = 0;
   second = 0;
@@ -47,7 +39,20 @@ resetBtn.addEventListener("click", function () {
   document.getElementById("min").innerHTML = "00";
   document.getElementById("sec").innerHTML = "00";
   document.getElementById("count").innerHTML = "00";
-});
+}
+
+// resetBtn.addEventListener("click", function () {
+//   document.getElementById("spann").innerHTML = "Start";
+//   timer = false;
+//   hour = 0;
+//   minute = 0;
+//   second = 0;
+//   count = 0;
+//   document.getElementById("hr").innerHTML = "00";
+//   document.getElementById("min").innerHTML = "00";
+//   document.getElementById("sec").innerHTML = "00";
+//   document.getElementById("count").innerHTML = "00";
+// });
 
 function stopWatch() {
   if (timer) {
