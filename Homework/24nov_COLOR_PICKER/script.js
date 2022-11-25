@@ -42,11 +42,10 @@
 //     ")";
 //   console.log(colorone + "," + colortwo + "," + colorthree);
 // });
-
+let first = 0;
+let second = 0;
+let third = 0;
 function change(e) {
-  let first = 0;
-  let second = 0;
-  let third = 0;
   if (e.target.name == "first") {
     document.getElementById("Red").innerHTML = e.target.value;
     first = e.target.value;
@@ -55,13 +54,11 @@ function change(e) {
     document.getElementById("Green").innerHTML = e.target.value;
   } else if (e.target.name == "third") {
     third = e.target.value;
-     document.getElementById("Blue").innerHTML = e.target.value;
+    document.getElementById("Blue").innerHTML = e.target.value;
   }
-  document.getElementById("title").style.color =
-    "rgb(" + first + "," + second + "," + third + ")";
+
   document.getElementById("start").style.backgroundColor =
     "rgb(" + first + "," + second + "," + third + ")";
-    document.getElementById("container").style.backgroundColor =
-      "rgb(" + first + "," + second + "," + third + ")";
-      
+  document.getElementById("container").style.backgroundColor =
+    "rgb(" + first + "," + second + "," + third + ")";
 }
