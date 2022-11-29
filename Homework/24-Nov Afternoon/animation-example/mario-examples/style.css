@@ -32,7 +32,7 @@ html, body{
 
 .lines{
   box-sizing: border-box;
-  border: 5px dashed #fff;
+  border: 3px dashed #fff;
   height: 0px;
   width: 100%;
   position: absolute;

@@ -5,10 +5,10 @@
 </head>
 <style>
   .cloud {
-    animation: moveCloud 14s infinite;
+    animation: moveCloud 2s infinite;
   }
   .mario {
-    animation: movebike 3s infinite;
+    animation: movebike 7s infinite;
   }
 
   .lines {
@@ -18,13 +18,8 @@
     0% {
       transform: translatex(1000px);
     }
-    30% {
-      transform: translateX(50px);
-    }
-    60% {
-      transform: translateX(50px);
-    }
-    90% {
+
+    100% {
       transform: translateX(50px);
     }
   }
@@ -52,6 +47,7 @@
 <body>
   <div class="sky">
     <img src="./img/cloud.png" class="cloud" alt="" />
+    <img src="./img/cloud.png" class="cloud3 cloud" alt="" />
   </div>
   <div class="grass"></div>
   <div class="road">
