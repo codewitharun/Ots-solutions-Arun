@@ -34,7 +34,7 @@ html, body{
   box-sizing: border-box;
   border: 3px dashed #fff;
   height: 0px;
-  width: 100%;
+  width: 50%;
   position: absolute;
   top: 45%;
 }
