@@ -1,0 +1,24 @@
+#idthree{
+    background-color: black;
+}
+
+.secondclass {
+    background-color: rgb(86, 201, 124) ;
+}
+
+.liclass {
+    background-color: rgb(222, 122, 34);
+}
+
+*{
+    font-weight: 800;
+} 
+li[data]{
+    background-color: brown;
+}
+#idone ,#idtwo,#idthree{
+    color: slateblue;
+}
+#idthree:hover{
+    background-color: red;
+}

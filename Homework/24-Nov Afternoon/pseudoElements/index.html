@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<style>
+    p::first-letter{
+        color: yellow;
+    }
+    .para::first-line{
+        color: red;
+        font-size: 2rem;
+    }
+    li::selection{
+        background-color: yellow;
+        color: aqua;
+    }
+    li::marker{
+        color: purple;
+    }
+
+    p::before{
+        content: 'Hello';
+        height: 14px;
+        background-color: blue;
+        width: 17px;
+    }
+
+    p::after{
+        content: 'Hello';
+        height: 14px;
+        background-color: blue;
+        width: 17px;
+    }
+
+    p:hover{
+        color: aquamarine;
+    }
+
+    input::placeholder{
+        color: blue;
+    }
+</style>
+
+<body>
+    <h1 tabindex="0" aria-colindex="">CSS Pseudo Selector Elements</h1>
+    <p class="para" tabindex="0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque sequi laudantium minus illum alias ea! Quae,
+        beatae at? Libero omnis commodi saepe mollitia quos eveniet molestiae esse eligendi soluta voluptates? <a href="">abs</a>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo odit optio ducimus soluta error pariatur similique iusto tenetur eaque minima dolorem ipsa consequuntur voluptatum officia, fugiat non modi excepturi inventore.</p>
+    <ul tabindex="0">
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+
+    </ul>
+    <ol>
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+        <li>Lorem ipsum dolor sit a</li>
+    </ol>
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="Enter FirstName"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+    </form>
+
+</body>
+
+</html>

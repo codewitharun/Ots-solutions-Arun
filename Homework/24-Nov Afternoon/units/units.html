@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units</title>
+</head>
+<style>
+
+    .box {
+        height: 2rem;
+        width: 100%;
+        background-color: aqua;
+        margin-bottom: 1rem;
+        padding: 14px;
+        color: brown;
+
+    }
+
+    /* .parent{
+        font-size: 4%;
+    } */
+
+    .parent{
+        font-size: 2rem;
+    }
+
+.rem-unit {
+    font-size: 2rem;
+}
+
+.em-unit{
+    font-size: 4em;
+}
+
+</style>
+
+<body>
+    <div class="box percent">50%</div>
+        <div class="box rem-unit">1 rem</div>
+        <div class="box em-unit">1em</div>
+    <div class="parent">
+        <div class="box percent">50% inside parents</div> 
+        <div class="box rem-unit">2rem</div>
+        <div class="box em-unit">2em</div>
+       
+    </div>
+</body>
+
+</html>
+
+//% unit is always relative to the parent
+//px is a absolute unit
+//vh and vw: these are relative to the view port
+// rem em relative units
+//rem: 100% of the font size
+//em : relative to the font size of the container

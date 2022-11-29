@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+  <title>Mario Kart Animations</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+  .cloud {
+    animation: moveCloud 14s infinite;
+  }
+  .mario {
+    animation: movebike 3s infinite;
+  }
+
+  .lines {
+    animation: moveroad 1s infinite;
+  }
+  @keyframes moveCloud {
+    0% {
+      transform: translatex(1000px);
+    }
+    30% {
+      transform: translateX(50px);
+    }
+    60% {
+      transform: translateX(50px);
+    }
+    90% {
+      transform: translateX(50px);
+    }
+  }
+  @keyframes movebike {
+    0% {
+      transform: translateX(10px);
+    }
+    40% {
+      transform: translateX(550px);
+    }
+    100% {
+      transform: translateX(1350px);
+    }
+  }
+  @keyframes moveroad {
+    0% {
+      transform: translateX(250px);
+    }
+
+    100% {
+      transform: translateX(-110px);
+    }
+  }
+</style>
+<body>
+  <div class="sky">
+    <img src="./img/cloud.png" class="cloud" alt="" />
+  </div>
+  <div class="grass"></div>
+  <div class="road">
+    <div class="lines"></div>
+    <img src="./img/mario.png" alt="" class="mario" />
+    <span class="mario" style="margin-top: -20px"
+      >I am on learning license</span
+    >
+  </div>
+</body>
