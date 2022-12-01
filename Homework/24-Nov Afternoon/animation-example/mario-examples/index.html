@@ -10,6 +10,9 @@
   .mario {
     animation: movebike 7s infinite;
   }
+  .marioo {
+    animation: movebikee 7s infinite;
+  }
 
   .lines {
     animation: moveroad 1s infinite;
@@ -31,9 +34,32 @@
     40% {
       transform: translateX(550px);
       transform: translateY(30px);
+      transform: rotate(325deg);
+    }
+    70% {
+      transform: rotate(345deg);
+
+      transform: translateX(850px);
     }
     100% {
+      transform: translateY(-90px);
+      transform: translateX(1550px);
+    }
+  }
+  @keyframes movebikee {
+    0% {
+      transform: translateX(10px);
+      transform: translateY(-30px);
+      transform: rotate(325deg);
+    }
+    40% {
       transform: translateX(550px);
+      transform: translateY(30px);
+    }
+
+    100% {
+      transform: translateY(-90px);
+      transform: translateX(1550px);
     }
   }
   @keyframes moveroad {
@@ -55,6 +81,7 @@
   <div class="road">
     <div class="lines"></div>
     <img src="./img/mario.png" alt="" class="mario" />
+    <img src="./img/mario.png" alt="" class="marioo" />
     <span class="mario" style="margin-top: -20px"
       >I am on learning license</span
     >
