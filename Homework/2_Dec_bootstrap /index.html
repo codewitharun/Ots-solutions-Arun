@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 1</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navigation Bar-->
+    <nav class="navbar navbar-light bg-primary">
+      <div class="container">
+        <a class="navbar-brand text-light" href="#"> Travel Rectangle </a>
+        <button type="button" class="btn btn-light">Sign In</button>
+      </div>
+    </nav>
+
+    <nav class="m-3" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Tour Packages</a></li>
+        <li class="breadcrumb-item"><a href="#">International</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Asia</li>
+      </ol>
+    </nav>
+
+    <!-- Header Section -->
+    <div
+      id="carouselExampleDark"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img
+            src="https://thumbs.dreamstime.com/z/male-hands-holding-around-trunk-pine-tree-male-hands-holding-around-trunk-pine-tree-warm-light-soft-focus-park-forest-123343156.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="height: 200px"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            style="height: 200px"
+            src="https://thumbs.dreamstime.com/z/women-hug-big-tree-color-hipster-tone-selective-soft-focus-concept-nature-people-85496253.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://thumbs.dreamstime.com/z/man-hands-embracing-trunk-tree-person-wood-hugging-human-connection-to-nature-love-protect-concept-194477905.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="height: 200px"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- Content Section -->
+
+    <div class="container mb-md-5 p-5">
+      <div class="row">
+        <div class="col">
+          <div>
+            <div class="text-center">
+              <h2>Fully Responsive</h2>
+              <p class="text-muted">
+                This theme will look great on any device, no matter the size!
+                <a href="#one"> click me</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
+            <div class="text-center">
+              <h2>Bootstrap 5 Ready</h2>
+              <p class="text-muted">
+                Featuring the latest build of the new Bootstrap 5 framework!
+                <a href="#two"> click me</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
+            <div class="text-center">
+              <h2>Easy to Use</h2>
+              <p class="text-muted">
+                Ready to use with your own content, or customize the source
+                files!
+                <a href="#three"> click me</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SIDE CONTENTS -->
+    <div class="container mb-md-5 d-flex" id="one">
+      <div class="w-50">
+        <p style="text-align: left; width: 200px">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim maxime
+          praesentium odio. Neque ex odit voluptates, pariatur deserunt tenetur
+          quisquam inventore itaque a rem fuga natus eos facilis amet optio!
+        </p>
+      </div>
+      <div class="w-50"></div>
+    </div>
+    <div class="container mb-md-5 d-flex" id="two">
+      <div class="w-75"></div>
+      <div class="w-25">
+        <p style="text-align: right; width: 200px">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim maxime
+          praesentium odio. Neque ex odit voluptates, pariatur deserunt tenetur
+          quisquam inventore itaque a rem fuga natus eos facilis amet optio!
+          lorem*3
+        </p>
+      </div>
+    </div>
+    <div class="container mb-md-5 d-flex" id="three">
+      <div class="w-50">
+        <p style="text-align: left; width: 200px">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim maxime
+          praesentium odio. Neque ex odit voluptates, pariatur deserunt tenetur
+          quisquam inventore itaque a rem fuga natus eos facilis amet optio!
+        </p>
+      </div>
+      <div class="w-50"></div>
+    </div>
+    <!-- testimonials  -->
+    <div class="container mb-md-5">
+      <h2 class="text-center text-secondary mt-md-5 mb-md-5">
+        What people are saying...
+      </h2>
+      <div class="row">
+        <div class="col">
+          <div class="card border-0">
+            <div class="card-body text-center">
+              <h5 class="card-title">Margaret E.</h5>
+              <p class="card-text text-muted">
+                "This is fantastic! Thanks so much guys!"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-0">
+            <div class="card-body text-center">
+              <h5 class="card-title">Fred S.</h5>
+              <p class="card-text text-muted">
+                "Bootstrap is amazing. I've been using it to create lots of
+                super nice landing pages."
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-0">
+            <div class="card-body text-center">
+              <h5 class="card-title">Margaret E.</h5>
+              <p class="card-text text-muted">
+                "Thanks so much for making these free resources available to
+                us!"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mb-md-5 pt-md-2 pb-md-2 bg-light">
+      <h2
+        class="text-center text-muted mb-md-5"
+        style="margin-top: 3rem !important"
+      >
+        Ready to get started? Sign up now!
+      </h2>
+      <div class="text-center mb-5">
+        <input
+          type="text"
+          class="form-control w-25"
+          id="enterEmail"
+          placeholder="Enter your email..."
+          style="display: inline"
+        />
+        <button
+          type="button"
+          class="form-control btn-primary"
+          style="display: inline; width: 10% !important"
+        >
+          Sign Up!
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+
+    <div class="bg-light">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">We're Hiring</a>
+        </li>
+      </ul>
+      <p class="text-center text-muted pb-md-2">
+        &copy; Your Website 2022. All Rights Reserved.
+      </p>
+    </div>
+  </body>
+</html>
