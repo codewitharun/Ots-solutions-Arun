@@ -1,27 +1,14 @@
 import React from "react";
 
-export default function Description(props) {
+export default function Description({ details }) {
+  // console.log(props.details);
   return (
     <div>
-      <h3 style={{ textAlign: "center" }}>Descriptions</h3>
+      {/* <h3 style={{ textAlign: "center" }}>Descriptions</h3> */}
 
-      <ul>
-        {props.details.map((i) => (
-          <li key={i.recipeName}>{i.recipeName}</li>
-        ))}
-      </ul>
-
-      <ul>
-        {props.details.map((i) => (
-          <li key={i.recipeName}>{i.chefName}</li>
-        ))}
-      </ul>
-
-      <ul>
-        {props.details.map((i) => (
-          <li key={i.recipeName}>{i.recipeDescription}</li>
-        ))}
-      </ul>
+      <h2>Dish Name: {details?.recipeName}</h2>
+      <h3>Chef Name: {details?.chefName}</h3>
+      <p>Description: {details?.recipeDescription}</p>
     </div>
   );
 }

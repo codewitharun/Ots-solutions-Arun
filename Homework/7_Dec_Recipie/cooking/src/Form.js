@@ -1,30 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "./List";
 import "./App.css";
 import InputForm from "./InputForm";
 import Description from "./Description";
 function Form() {
   const [data, setData] = useState([]);
-  const [final, setFinal] = useState([]);
+  const [final, setFinal] = useState(null);
   let update = (item) => {
-    if (item) {
-      //   setData((c) => [...c, item]);
-      setData((pre) => [...pre, item]);
-      console.log(data);
-    }
+    setData((pre) => [...pre, item]);
+    console.log(data);
+  };
+  const afteredit = (item) => {
+    let newdata = data.map((obj) => {
+      if (obj.id == item.id) {
+        return { obj, chefName: "Harry" };
+      }
+
+      return obj;
+    });
+    setData(newdata);
+    console.log(newdata);
   };
   let details = (item) => {
     if (item) {
-      //   setData((c) => [...c, item]);
-      setFinal((pre) => [item]);
-      console.log("details item", item);
+      setFinal(item);
     }
   };
-  //   let sort = () => {
-  //     const newData = data.sort();
-  //     console.log("jhsvfjhsdv", newData);
-  //     setData([...newData]);
-  //   };
+
+  const editable = (item) => {
+    let newdata = data.filter((c) => {
+      console.log("data from editable", item);
+      if (c.id === item.id) {
+        data.pop(item);
+        setData(newdata);
+      }
+    });
+  };
+
+  const deleteObject = (item) => {
+    let newdata = data.filter((c) => {
+      if (c.id === item) {
+        return false;
+      } else return true;
+    });
+    setData(newdata);
+    setFinal(null);
+  };
 
   return (
     <div
@@ -46,7 +67,11 @@ function Form() {
             width: "600px",
           }}
         >
-          <InputForm parentBag={update} />
+          <InputForm
+            parentBag={update}
+            editable={final}
+            afteredit={afteredit}
+          />
         </div>
         <div
           style={{
@@ -61,7 +86,12 @@ function Form() {
             <h3>List of Recipes</h3>
           </div>
           <div>
-            <List arr={data} details={details} />
+            <List
+              arr={data}
+              details={details}
+              deleteObject={deleteObject}
+              editable={editable}
+            />
           </div>
         </div>
       </div>
