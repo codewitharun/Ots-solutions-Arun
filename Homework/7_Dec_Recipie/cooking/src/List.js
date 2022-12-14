@@ -10,7 +10,6 @@ export default function List(props) {
           <li key={i?.id}>
             <div>
               <h4
-                style={{ display: "inline" }}
                 onClick={() => {
                   final = i;
                   props.details(final);
@@ -18,7 +17,7 @@ export default function List(props) {
               >
                 {i?.recipeName}
               </h4>
-              <span>
+              <span style={{ margin: "30px", backgroundColor: "red" }}>
                 <button
                   onClick={() => {
                     props.deleteObject(i?.id);
@@ -27,7 +26,7 @@ export default function List(props) {
                   X
                 </button>
               </span>
-              <span>
+              <span style={{ margin: "30px", backgroundColor: "green" }}>
                 <button
                   onClick={() => {
                     final = i;

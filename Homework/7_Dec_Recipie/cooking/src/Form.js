@@ -6,6 +6,7 @@ import Description from "./Description";
 function Form() {
   const [data, setData] = useState([]);
   const [final, setFinal] = useState(null);
+  const [edit, setEdit] = useState(null);
   let update = (item) => {
     setData((pre) => [...pre, item]);
     console.log(data);
@@ -13,13 +14,14 @@ function Form() {
   const afteredit = (item) => {
     let newdata = data.map((obj) => {
       if (obj.id == item.id) {
-        return { obj, chefName: "Harry" };
+        return { ...item };
       }
 
       return obj;
     });
+    console.log("NEW DATA AFTER EDIT", newdata);
+    setEdit(null);
     setData(newdata);
-    console.log(newdata);
   };
   let details = (item) => {
     if (item) {
@@ -28,13 +30,11 @@ function Form() {
   };
 
   const editable = (item) => {
-    let newdata = data.filter((c) => {
-      console.log("data from editable", item);
-      if (c.id === item.id) {
-        data.pop(item);
-        setData(newdata);
-      }
-    });
+    if (item) {
+      setEdit(item);
+    }
+
+    // setData(newdata);
   };
 
   const deleteObject = (item) => {
@@ -67,11 +67,7 @@ function Form() {
             width: "600px",
           }}
         >
-          <InputForm
-            parentBag={update}
-            editable={final}
-            afteredit={afteredit}
-          />
+          <InputForm parentBag={update} editable={edit} afteredit={afteredit} />
         </div>
         <div
           style={{

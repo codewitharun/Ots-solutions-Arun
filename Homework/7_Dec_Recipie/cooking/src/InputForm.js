@@ -31,9 +31,18 @@ function InputForm({ parentBag, editable, afteredit }) {
   };
   const afterEdit = () => {
     const afterUpdate = {
-      chefName: editable?.chefName,
-      recipeName: editable?.recipeName,
-      recipeDescription: editable?.recipeDescription,
+      chefName:
+        inputChefName.current.value === ""
+          ? editable?.recipeName
+          : inputChefName.current.value,
+      recipeName:
+        inputRecipeName.current.value === ""
+          ? editable?.recipeName
+          : inputRecipeName.current.value,
+      recipeDescription:
+        inputDetails.current.value === " "
+          ? editable?.recipeDescription
+          : inputDetails.current.value,
       id: editable?.id,
     };
     //   console.log(inputref.current.value);
@@ -41,7 +50,8 @@ function InputForm({ parentBag, editable, afteredit }) {
     inputRecipeName.current.value = "";
     inputDetails.current.value = "";
     inputChefName.current.value = "";
-    afteredit = {};
+
+    // afteredit = {};
   };
 
   return (
