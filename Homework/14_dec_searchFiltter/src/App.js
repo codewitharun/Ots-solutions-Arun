@@ -3,10 +3,11 @@ import SearchForm from "./components/SearchForm";
 import List from "./components/List";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { Pagination } from "semantic-ui-react";
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [renderPokemon, setRenderPokemon] = useState([]);
+  const [page, setpage] = useState(1);
 
   const filterPokemon = (searchValue) => {
     const newPokemons = pokemons.filter((pokemon) =>
@@ -33,6 +34,9 @@ function App() {
   // mimicing componentDidMount
   useEffect(() => {
     getPokemons();
+    if (page === 1) {
+      setRenderPokemon(pokemons.slice(0, 5));
+    }
   }, []);
 
   return (
@@ -40,6 +44,16 @@ function App() {
       <div>
         <SearchForm filterPokemon={filterPokemon} />
         <List pokemons={renderPokemon} />
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={null}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={1}
+          totalPages={4}
+          onPageChange={(event, data) => setpage(data.activePage)}
+        />
       </div>
     </div>
   );

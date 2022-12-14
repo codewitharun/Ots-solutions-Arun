@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Icon, Input } from "semantic-ui-react";
+import { Dropdown, Icon, Input } from "semantic-ui-react";
 import CurrencyComponentContainer from "./CurrencyComponentContainer";
 import CurrencySelectorContext from "../contexts/CurrencySelectorContext";
 import AmountEnteredContext from "../contexts/AmountEnteredContext";
@@ -10,7 +10,15 @@ function App() {
   const [currency, setCurrency] = useState("rupee");
   const [amount, setAmount] = useState(0);
   const [paymentMode, setPaymentMode] = useState("Cash");
+  console.log(paymentMode);
   const arrayOfStudents = ["Akshay", "Saurabh", "Chetan", "Kaustubh", "Akshay"];
+  const options = [
+    { key: "1", text: "Cash", value: "Cash" },
+    { key: "2", text: "Debit/Credit card", value: "Debit/Credit card" },
+    { key: "3", text: "Upi", value: "Upi" },
+    { key: "4", text: "Gpay", value: "Gpay" },
+    { key: "5", text: "Bitcoin", value: "Bitcoin" },
+  ];
 
   return (
     <div className="ui container">
@@ -59,7 +67,16 @@ function App() {
         />
         <br />
         <br />
-        Payment Mode : Cash
+        <Dropdown
+          placeholder="Payment Mode"
+          // selection
+          options={options}
+          onChange={(e, data) => {
+            let drop = data.value;
+            setPaymentMode(drop);
+          }}
+        />
+        {/* Payment Mode : {paymentMode} */}
         {/* <Menu compact>
           <Dropdown text="Dropdown" options={options} simple item />
         </Menu> */}

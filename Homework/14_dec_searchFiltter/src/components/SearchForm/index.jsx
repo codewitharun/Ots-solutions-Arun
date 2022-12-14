@@ -12,11 +12,20 @@ const SearchForm = ({ filterPokemon }) => {
         <input name="pokemon" onChange={search} />
         <button type="submit">Search</button>
         <button type="reset">Reset</button>
-        <select name="filter">
-          <option>All</option>
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Large</option>
+        <select
+          name="filter"
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
+        >
+          <optgroup label="reset">
+            <option>All</option>
+          </optgroup>
+          <optgroup label="Height">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </optgroup>
         </select>
       </form>
     </div>
