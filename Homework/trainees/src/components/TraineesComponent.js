@@ -6,7 +6,8 @@ const TraineesComponent = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [traineesList, setTraineesList] = useState([]);
   const [searchedTraineesList, setSearchedTraineesList] = useState([]);
-
+  const [Sort, setSort] = useState(null);
+  console.log(Sort);
   const mockTraineesData = [
     {
       firstName: "Rahul",
@@ -101,15 +102,44 @@ const TraineesComponent = () => {
 
   useEffect(() => {
     if (searchTerm != "") {
-      const filteredData = mockTraineesData.filter((trainee) =>
+      const filteredData = traineesList.filter((trainee) =>
         trainee.firstName.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setSearchedTraineesList(filteredData);
     }
   }, [searchTerm]);
+  useEffect(() => {
+    if (Sort == "descending") {
+      const shortedData = traineesList.sort(function (a, b) {
+        if (a.firstName < b.firstName) {
+          return -1;
+        }
+        if (b.firstName < a.firstName) {
+          return 1;
+        }
+        return 0;
+      });
+      setTraineesList(shortedData);
+    } else if (Sort == "ascending") {
+      const shortedData = traineesList.sort(function (a, b) {
+        if (a.firstName > b.firstName) {
+          return -1;
+        }
+        if (b.firstName > a.firstName) {
+          return 1;
+        }
+        return 0;
+      });
+
+      // console.log("sorted data", shortedData);
+      setTraineesList(shortedData);
+    } else {
+      setTraineesList(mockTraineesData);
+    }
+  }, [Sort]);
 
   const toDelete = (item) => {
-    const deletedList = mockTraineesData.filter((trainee, index) => {
+    const deletedList = traineesList.filter((trainee, index) => {
       if (index === item) {
         console.log(trainee);
         return false;
@@ -120,7 +150,20 @@ const TraineesComponent = () => {
     setTraineesList(deletedList);
     // setTraineesList(deletedList);
   };
+  const afteredit = (item) => {
+    console.log("After====>", item);
+    let newdata = mockTraineesData.map((obj, index) => {
+      if (obj.email == item.email) {
+        console.log("Before====>", obj);
 
+        return { ...item };
+      }
+
+      return obj;
+    });
+    console.log("NEW DATA AFTER EDIT", newdata);
+    setTraineesList(newdata);
+  };
   return (
     <>
       <Header as="h1">Trainees</Header>
@@ -145,6 +188,9 @@ const TraineesComponent = () => {
               floating
               options={options}
               trigger={<></>}
+              onChange={(e, u) => {
+                setSort(u.value);
+              }}
             />
           </Button.Group>
         </div>
@@ -153,6 +199,7 @@ const TraineesComponent = () => {
       <div style={{ margin: "1rem" }}>
         <TraineesList
           toDelete={toDelete}
+          toEdit={afteredit}
           trainees={searchTerm === "" ? traineesList : searchedTraineesList}
         />
       </div>

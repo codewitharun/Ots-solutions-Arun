@@ -9,7 +9,9 @@ function App() {
   const [renderPokemon, setRenderPokemon] = useState([]);
   const [paginationPokemons, setpaginationPokemons] = useState([]);
   const [page, setpage] = useState(1);
-  console.log(page);
+  const [sort, setSort] = useState("");
+
+  console.log("heights", sort);
   const filterPokemon = (searchValue) => {
     const newPokemons = paginationPokemons.filter((pokemon) =>
       pokemon.name.includes(searchValue.toLowerCase())
@@ -30,7 +32,40 @@ function App() {
         console.log(err);
       });
   };
+  function SortFilter(item) {
+    // console.log(item);
+    setSort(item);
+  }
+  // useEffect(() => {
+  //   if (sort < 3) {
+  //     const shortedData = paginationPokemons.sort(function (a, b) {
+  //       console.log(a, b);
+  //       if (a < b) {
+  //         return -1;
+  //       }
+  //       if (b < a) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
+  //     setRenderPokemon(shortedData);
+  //   } else if (sort == "ascending") {
+  //     const shortedData = paginationPokemons.sort(function (a, b) {
+  //       if (a.firstName > b.firstName) {
+  //         return -1;
+  //       }
+  //       if (b.firstName > a.firstName) {
+  //         return 1;
+  //       }
+  //       return 0;
+  //     });
 
+  //     // console.log("sorted data", shortedData);
+  //     // setTraineesList(shortedData);
+  //   } else {
+  //     // setTraineesList(mockTraineesData);
+  //   }
+  // }, [sort]);
   const dropdownFilter = (name) => {
     // console.log("data from dropdown filter", name);
     if (name === "Small") {
@@ -71,7 +106,7 @@ function App() {
           filterPokemon={filterPokemon}
           dropdownFilter={dropdownFilter}
         />
-        <List pokemons={renderPokemon} />
+        <List pokemons={renderPokemon} SortFilter={SortFilter} />
         <Pagination
           boundaryRange={0}
           defaultActivePage={1}
