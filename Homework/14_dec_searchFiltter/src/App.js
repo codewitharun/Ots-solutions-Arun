@@ -7,10 +7,11 @@ import { Pagination } from "semantic-ui-react";
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [renderPokemon, setRenderPokemon] = useState([]);
+  const [paginationPokemons, setpaginationPokemons] = useState([]);
   const [page, setpage] = useState(1);
-
+  console.log(page);
   const filterPokemon = (searchValue) => {
-    const newPokemons = pokemons.filter((pokemon) =>
+    const newPokemons = paginationPokemons.filter((pokemon) =>
       pokemon.name.includes(searchValue.toLowerCase())
     );
     setRenderPokemon(newPokemons);
@@ -22,27 +23,54 @@ function App() {
       .get("https://pokeapi.co/api/v2/pokemon/")
       .then(({ data: { results } }) => {
         setPokemons(results);
-        setRenderPokemon(results);
+        setRenderPokemon(results.slice(0, 4));
+        setpaginationPokemons(results.slice(0, 4));
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const deletePokemon = (name) => {};
-
-  // mimicing componentDidMount
+  const dropdownFilter = (name) => {
+    // console.log("data from dropdown filter", name);
+    if (name === "Small") {
+      console.log(name, "Selected");
+    } else if (name === "Medium") {
+      console.log(name, "Selected");
+    } else if (name === "Large") {
+      console.log(name, "Selected");
+    }
+  };
   useEffect(() => {
     getPokemons();
-    if (page === 1) {
-      setRenderPokemon(pokemons.slice(0, 5));
-    }
   }, []);
+  // mimicing componentDidMount
+  useEffect(() => {
+    if (page === 1) {
+      setRenderPokemon(pokemons.slice(0, 4));
+      setpaginationPokemons(pokemons.slice(0, 4));
+    } else if (page === 2) {
+      setRenderPokemon(pokemons.slice(4, 8));
+      setpaginationPokemons(pokemons.slice(4, 8));
+    } else if (page === 3) {
+      setRenderPokemon(pokemons.slice(8, 12));
+      setpaginationPokemons(pokemons.slice(8, 12));
+    } else if (page === 4) {
+      setRenderPokemon(pokemons.slice(12, 16));
+      setpaginationPokemons(pokemons.slice(12, 16));
+    } else if (page === 5) {
+      setRenderPokemon(pokemons.slice(16, 20));
+      setpaginationPokemons(pokemons.slice(16, 20));
+    }
+  }, [page]);
 
   return (
     <div style={{ marginLeft: "20px" }}>
       <div>
-        <SearchForm filterPokemon={filterPokemon} />
+        <SearchForm
+          filterPokemon={filterPokemon}
+          dropdownFilter={dropdownFilter}
+        />
         <List pokemons={renderPokemon} />
         <Pagination
           boundaryRange={0}
@@ -51,7 +79,7 @@ function App() {
           firstItem={null}
           lastItem={null}
           siblingRange={1}
-          totalPages={4}
+          totalPages={5}
           onPageChange={(event, data) => setpage(data.activePage)}
         />
       </div>

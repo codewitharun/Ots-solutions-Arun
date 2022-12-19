@@ -76,10 +76,6 @@ function App() {
             setPaymentMode(drop);
           }}
         />
-        {/* Payment Mode : {paymentMode} */}
-        {/* <Menu compact>
-          <Dropdown text="Dropdown" options={options} simple item />
-        </Menu> */}
         <br />
         <br />
         <PaymentModeSelectorContext.Provider value={paymentMode}>
