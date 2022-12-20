@@ -34,7 +34,7 @@ const TraineesList = (props) => {
       email: owner?.email,
     };
     props.toEdit(update);
-    setOpen(false);
+    setOpen(true);
   }
 
   return (
@@ -79,9 +79,13 @@ const TraineesList = (props) => {
                     // trigger={<Button>Show Modal</Button>}
                     onClose={() => setOpen(false)}
                     onOpen={() => setOpen(true)}
+                    inverted
                   >
-                    <Header icon="edit" content=" Edit Details " />
-                    <Modal.Content>
+                    <Header
+                      icon="edit"
+                      content={` Edit Details ${owner?.firstName} ${owner?.lastName} `}
+                    />
+                    <Modal.Content size="small">
                       <Input
                         placeholder={owner?.firstName}
                         onChange={(e) => setFirstName(e.target.value)}
