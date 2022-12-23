@@ -1,0 +1,27 @@
+.card:hover .clickLink {
+background-color: rgb(0, 119, 255) !important;
+color:black !important;
+
+    
+    }
+.clickLink{
+ height: '60px' !important;
+ border-radius: '220px' !important;
+}
+.navbar{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   margin-bottom: '40px';
+   position: sticky;
+    height: 40px;
+   /* border-bottom: 1px solid #000000; */
+                align-items: center;
+      
+   
+}
+.navbar:hover{
+    /* background-color:red !important; */
+    height: 40px;
+    align-items: center;
+}

@@ -5,11 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import Dropdown from "./components/dropState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <App />
+    {/* <Dropdown /> */}
   </BrowserRouter>
 );
 
