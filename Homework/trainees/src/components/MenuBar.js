@@ -16,8 +16,19 @@ const MenuBar = (props) => {
       <Menu
         items={items}
         onItemClick={(e) => {
-          <Link to={`/${e.target.innerText.toLowerCase()}`} />;
-          console.log(`/${e.target.innerText.toLowerCase()}`);
+          items.map((item) => (
+            <Link
+              key={item.name}
+              to={item.to}
+              aria-current={item.current ? "page" : undefined}
+              onClick={() => {
+                item.current = true;
+                console.log(item.current);
+              }}
+            >
+              {item.name}
+            </Link>
+          ));
         }}
       />
     </>

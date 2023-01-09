@@ -187,7 +187,7 @@ const TraineesComponent = () => {
               className="button icon"
               floating
               options={options}
-              trigger={<></>}
+              
               onChange={(e, u) => {
                 setSort(u.value);
               }}

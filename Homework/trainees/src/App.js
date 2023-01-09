@@ -30,7 +30,7 @@ function App() {
         </nav>
       </div>
       <hr />
-      {/* <MenuBar /> */}
+      <MenuBar />
       <Routes>
         <Route path="/" index element={<div>Home</div>} />
 

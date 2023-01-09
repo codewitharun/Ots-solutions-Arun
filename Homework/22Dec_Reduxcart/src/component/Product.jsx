@@ -17,7 +17,7 @@ const Product = () => {
               {products.map((product) => (
                 <a key={product.id} href={product.href} className="group">
                   <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                    {console.log(product)}
+                    {/* {console.log(product)} */}
                     <img
                       src={product.imageSrc}
                       alt={product.imageAlt}
