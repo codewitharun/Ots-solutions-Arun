@@ -1,7 +1,6 @@
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 
-
 const TextBox = ({getBoxType}) => {
   const [text, setText] = useState('');
   return (
