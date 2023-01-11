@@ -5,19 +5,14 @@ import React from 'react';
 const Products = ({navigation, keyType}) => {
   return (
     <SafeAreaView>
-      <View style={{}}>
-        <Text style={{lineHeight: 50}}>KeyboardType: {keyType}</Text>
+      <View>
+        <Text style={styles.textStyle}>KeyboardType: {keyType}</Text>
         <TextInput
-          style={{
-            borderWidth: 1,
-            width: '90%',
-            paddingLeft: 30,
-            height: 60,
-            borderRadius: 7,
-          }}
+          style={styles.textBox}
           keyboardType={keyType}
           placeholder={keyType}
-          keyboardAppearance="dark"
+          placeholderTextColor="white"
+          keyboardAppearance="light"
         />
       </View>
     </SafeAreaView>
@@ -26,4 +21,15 @@ const Products = ({navigation, keyType}) => {
 
 export default Products;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  textBox: {
+    borderWidth: 1,
+    borderColor: 'red',
+    width: '100%',
+    paddingLeft: 30,
+    height: 60,
+    borderRadius: 7,
+    color: 'white',
+  },
+  textStyle: {lineHeight: 50, fontWeight: 'bold', fontSize: 20, color: 'white'},
+});
