@@ -4,21 +4,29 @@ import Products from './src/Screens/products';
 
 import TextBox from './src/Screens/Textbox';
 import Touch from './src/Screens/Touch';
+import Avatar from './src/Screens/Avatar';
 const App = ({navigation}) => {
-  const [textFromBox, setTextFromBox] = useState('default');
-  const text = txt => {
-    setTextFromBox(txt);
-  };
-  useEffect(() => {
-    text();
-  }, []);
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'light-content'}></StatusBar>
-      <Touch />
-      <TextBox getBoxType={text} />
-      <Products keyType={textFromBox} />
+
+      <Avatar
+        avatar={
+          'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png'
+        }
+      />
+
+      <TextBox
+        getBoxType={'email-address'}
+        secure={false}
+        placeHolderText={'Enter Your Email'}
+      />
+      <TextBox
+        getBoxType={'numeric'}
+        secure={true}
+        placeHolderText={'Enter Your Password'}
+      />
+      <Touch type={'Login'} />
     </View>
   );
 };
