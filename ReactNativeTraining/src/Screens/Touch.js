@@ -2,6 +2,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -11,17 +12,13 @@ import React from 'react';
 
 const Touch = ({type}) => {
   return (
-    <View
-      style={{
-        backgroundColor: 'blue',
-        height: 50,
-        width: '80%',
-        marginBottom: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <TouchableOpacity>
-        <Text style={{fontWeight: 'bold', color: 'white'}}>{type}</Text>
+    <View style={styles.Container}>
+      <TouchableOpacity
+        onPress={() => {
+          alert('Welcome');
+        }}
+        style={styles.TouchableView}>
+        <Text style={styles.TextStle}>{type}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -29,4 +26,18 @@ const Touch = ({type}) => {
 
 export default Touch;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  Container: {
+    height: 40,
+    width: 300,
+    marginBottom: 50,
+  },
+  TouchableView: {
+    backgroundColor: 'blue',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  TextStle: {fontWeight: 'bold', color: 'white'},
+});

@@ -8,13 +8,7 @@ const TextBox = ({getBoxType, secure, placeHolderText}) => {
       <TextInput
         keyboardType={getBoxType}
         secureTextEntry={secure}
-        style={{
-          height: 40,
-          backgroundColor: 'white',
-          width: 300,
-          paddingLeft: 20,
-          marginBottom: 30,
-        }}
+        style={styles.TextInputStyle}
         placeholder={placeHolderText}
         onChangeText={txt => {
           setText(txt);
@@ -26,4 +20,12 @@ const TextBox = ({getBoxType, secure, placeHolderText}) => {
 
 export default TextBox;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  TextInputStyle: {
+    height: 40,
+    backgroundColor: 'white',
+    width: 300,
+    paddingLeft: 20,
+    marginBottom: 30,
+  },
+});

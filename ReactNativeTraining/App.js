@@ -1,6 +1,5 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import Products from './src/Screens/products';
 
 import TextBox from './src/Screens/Textbox';
 import Touch from './src/Screens/Touch';
@@ -8,11 +7,11 @@ import Avatar from './src/Screens/Avatar';
 const App = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'light-content'}></StatusBar>
+      <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
 
       <Avatar
         avatar={
-          'https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png'
+          'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
         }
       />
 

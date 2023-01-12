@@ -5,16 +5,11 @@ const Avatar = ({avatar}) => {
   return (
     <View>
       <Image
-        resizeMode="contain"
+        resizeMode="cover"
         source={{
           uri: avatar,
         }}
-        style={{
-          height: 200,
-          width: 200,
-          borderRadius: 100 / 2,
-          marginBottom: 30,
-        }}
+        style={styles.ImageStyle}
       />
     </View>
   );
@@ -22,4 +17,11 @@ const Avatar = ({avatar}) => {
 
 export default Avatar;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  ImageStyle: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    marginBottom: 30,
+  },
+});
