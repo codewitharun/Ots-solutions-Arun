@@ -1,13 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 const Touch = ({type}) => {
@@ -18,7 +9,7 @@ const Touch = ({type}) => {
           alert('Welcome');
         }}
         style={styles.TouchableView}>
-        <Text style={styles.TextStle}>{type}</Text>
+        <Text style={styles.TextStyle}>{type}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -39,5 +30,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  TextStle: {fontWeight: 'bold', color: 'white'},
+  TextStyle: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 20,
+  },
 });

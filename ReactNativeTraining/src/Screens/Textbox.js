@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 
 const TextBox = ({getBoxType, secure, placeHolderText}) => {
