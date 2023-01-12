@@ -9,29 +9,20 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const Touch = () => {
+const Touch = ({type}) => {
   return (
     <View
       style={{
-        backgroundColor: 'white',
-        height: 200,
-        width: '100%',
+        backgroundColor: 'blue',
+        height: 50,
+        width: '80%',
         marginBottom: 50,
-        justifyContent: 'space-around',
-        // alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <TouchableHighlight>
-        <Text>TouchableHighlight</Text>
-      </TouchableHighlight>
       <TouchableOpacity>
-        <Text>TouchableOpacity</Text>
+        <Text style={{fontWeight: 'bold', color: 'white'}}>{type}</Text>
       </TouchableOpacity>
-      <TouchableWithoutFeedback>
-        <Text>TouchableWithoutFeedback</Text>
-      </TouchableWithoutFeedback>
-      <TouchableNativeFeedback>
-        <Text>TouchableNativeFeedback</Text>
-      </TouchableNativeFeedback>
     </View>
   );
 };
