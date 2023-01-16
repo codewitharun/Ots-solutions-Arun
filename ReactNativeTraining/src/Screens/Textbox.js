@@ -6,6 +6,7 @@ const TextBox = ({getBoxType, secure, placeHolderText}) => {
   return (
     <View>
       <TextInput
+       
         keyboardType={getBoxType}
         secureTextEntry={secure}
         style={styles.TextInputStyle}
