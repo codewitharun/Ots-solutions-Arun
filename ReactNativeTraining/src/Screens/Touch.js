@@ -1,15 +1,18 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const Touch = ({type}) => {
+const Touch = props => {
+  // console.log(props);
   return (
     <View style={styles.Container}>
       <TouchableOpacity
         onPress={() => {
-          alert('Welcome');
+          props.Rout
+            ? props.navigation.navigate(props.Rout)
+            : alert('Screen navigation not set');
         }}
         style={styles.TouchableView}>
-        <Text style={styles.TextStyle}>{type}</Text>
+        <Text style={styles.TextStyle}>{props.type}</Text>
       </TouchableOpacity>
     </View>
   );
