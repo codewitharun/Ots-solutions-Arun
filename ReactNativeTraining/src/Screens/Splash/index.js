@@ -22,7 +22,7 @@ const Splash = props => {
       <ImageBackground
         resizeMode="cover"
         source={{
-          uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
+          uri: 'https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
         }}
         style={styles.container}>
         <View

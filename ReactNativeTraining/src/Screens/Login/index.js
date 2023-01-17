@@ -48,6 +48,7 @@ const Login = ({navigation}) => {
         Rout={Routes.Signup}
         navigation={navigation.navigate}
       />
+      <Text>Login Using this Text</Text>
     </ImageBackground>
   );
 };

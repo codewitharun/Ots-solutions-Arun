@@ -21,13 +21,7 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs(props) {
   return (
-    <Tab.Navigator
-      screenOptions={{headerShown: false}}
-      tabBar={props => {
-        <View style={{backgroundColor: 'red', height: 40, width: '100%'}}>
-          <Text>Hello ji</Text>
-        </View>;
-      }}>
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen name={Routes.Login} component={screens.Login} />
 
       <Tab.Screen name={Routes.Signup} component={screens.Signup} />

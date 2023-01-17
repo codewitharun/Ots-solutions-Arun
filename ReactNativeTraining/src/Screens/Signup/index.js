@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, ImageBackground} from 'react-native';
+import {StatusBar, StyleSheet, ImageBackground, Text} from 'react-native';
 import React from 'react';
 
 import Avatar from '../../CustomComponents/Avatar';
@@ -42,6 +42,7 @@ const Signup = ({navigation}) => {
         Rout={Routes.Login}
         navigation={navigation.navigate}
       />
+      <Text>Signup using Signup Text</Text>
     </ImageBackground>
   );
 };

@@ -5,4 +5,8 @@ export const Routes = {
   Profile: 'Profile',
   Splash: 'Splash',
   BottomTab: 'Bottom',
+  Contact: 'Contact',
+  About: 'About',
+  Chat: 'Chat',
+  Notification: 'Notification',
 };
