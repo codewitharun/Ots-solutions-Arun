@@ -13,6 +13,12 @@ const Route = ({navigation}) => {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name={Routes.Login} component={screens.Login} />
       <Stack.Screen name={Routes.Signup} component={screens.Signup} />
+      <Stack.Screen
+        name={Routes.Profile}
+        component={screens.Profile}
+        options={{headerShown: true}}
+      />
+      <Stack.Screen name={Routes.Dashboard} component={screens.Dashboard} />
     </Stack.Navigator>
   );
 };

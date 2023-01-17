@@ -1,16 +1,9 @@
-import {
-  StatusBar,
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {StatusBar, StyleSheet, ImageBackground} from 'react-native';
 import React from 'react';
 
-import TextBox from '../Textbox';
-import Touch from '../Touch';
-import Avatar from '../Avatar';
+import Avatar from '../../CustomComponents/Avatar';
+import CustomButton from '../../CustomComponents/CustomButton';
+import TextBox from '../../CustomComponents/TextBox';
 import {Routes} from '../../Route/Route';
 const Signup = ({navigation}) => {
   return (
@@ -34,12 +27,21 @@ const Signup = ({navigation}) => {
         placeHolderText={'Enter Your Email'}
       />
       <TextBox
+        getBoxType={'email-address'}
+        secure={false}
+        placeHolderText={'Enter Your Email'}
+      />
+      <TextBox
         getBoxType={'numeric'}
         secure={true}
         placeHolderText={'Enter Your Password'}
       />
-      <Touch type={Routes.Signup} />
-      <Touch type={Routes.Login} Rout={Routes.Login} navigation={navigation} />
+      <CustomButton type={Routes.Signup} />
+      <CustomButton
+        type={Routes.Login}
+        Rout={Routes.Login}
+        navigation={navigation.navigate}
+      />
     </ImageBackground>
   );
 };

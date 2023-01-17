@@ -8,11 +8,10 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import TextBox from '../../CustomComponents/TextBox';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
-const Login = ({navigation}) => {
+const Profile = ({navigation}) => {
   return (
     <ImageBackground
       resizeMode="cover"
@@ -28,30 +27,15 @@ const Login = ({navigation}) => {
         }
       />
 
-      <TextBox
-        getBoxType={'email-address'}
-        secure={false}
-        placeHolderText={'Enter Your Email'}
-      />
-      <TextBox
-        getBoxType={'numeric'}
-        secure={true}
-        placeHolderText={'Enter Your Password'}
-      />
       <CustomButton
-        type={Routes.Login}
+        type={'Navigate to Dashboard '}
         navigation={navigation.navigate}
-        Rout={Routes.Profile}
-      />
-      <CustomButton
-        type={Routes.Signup}
-        Rout={Routes.Signup}
-        navigation={navigation.navigate}
+        Rout={Routes.Dashboard}
       />
     </ImageBackground>
   );
 };
-export default Login;
+export default Profile;
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

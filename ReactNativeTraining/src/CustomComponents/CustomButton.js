@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const Touch = props => {
+const CustomButton = props => {
   // console.log(props);
   return (
     <View style={styles.Container}>
       <TouchableOpacity
         onPress={() => {
-          props.Rout
-            ? props.navigation.navigate(props.Rout)
+          props.navigation
+            ? props.navigation(props.Rout)
             : alert('Screen navigation not set');
         }}
         style={styles.TouchableView}>
@@ -18,7 +18,7 @@ const Touch = props => {
   );
 };
 
-export default Touch;
+export default CustomButton;
 
 const styles = StyleSheet.create({
   Container: {

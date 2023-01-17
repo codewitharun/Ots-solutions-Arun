@@ -8,11 +8,10 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import TextBox from '../../CustomComponents/TextBox';
 import CustomButton from '../../CustomComponents/CustomButton';
-import Avatar from '../../CustomComponents/Avatar';
+
 import {Routes} from '../../Route/Route';
-const Login = ({navigation}) => {
+const Dashboard = ({navigation}) => {
   return (
     <ImageBackground
       resizeMode="cover"
@@ -22,36 +21,20 @@ const Login = ({navigation}) => {
       style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
 
-      <Avatar
-        avatar={
-          'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
-        }
-      />
-
-      <TextBox
-        getBoxType={'email-address'}
-        secure={false}
-        placeHolderText={'Enter Your Email'}
-      />
-      <TextBox
-        getBoxType={'numeric'}
-        secure={true}
-        placeHolderText={'Enter Your Password'}
+      <CustomButton
+        type={'Pop back Example'}
+        // Rout={Routes.Profile}
+        navigation={navigation.pop}
       />
       <CustomButton
-        type={Routes.Login}
-        navigation={navigation.navigate}
-        Rout={Routes.Profile}
-      />
-      <CustomButton
-        type={Routes.Signup}
-        Rout={Routes.Signup}
-        navigation={navigation.navigate}
+        type={'Go back Example'}
+        // Rout={Routes.Signup}
+        navigation={navigation.goBack}
       />
     </ImageBackground>
   );
 };
-export default Login;
+export default Dashboard;
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

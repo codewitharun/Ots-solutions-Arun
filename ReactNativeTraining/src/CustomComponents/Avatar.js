@@ -15,7 +15,7 @@ const Avatar = ({avatar}) => {
         />
         <TouchableOpacity
           onPress={() => {
-            alert('user is offline');
+            alert('Choose image from gallary');
           }}
           style={{
             height: 30,
