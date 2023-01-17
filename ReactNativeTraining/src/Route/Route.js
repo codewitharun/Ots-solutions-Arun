@@ -3,4 +3,6 @@ export const Routes = {
   Signup: 'Signup',
   Dashboard: 'Dashboard',
   Profile: 'Profile',
+  Splash: 'Splash',
+  BottomTab: 'Bottom',
 };
