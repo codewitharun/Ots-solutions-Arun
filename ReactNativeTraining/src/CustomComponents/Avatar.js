@@ -25,6 +25,7 @@ const Avatar = ({avatar}) => {
             bottom: 0,
             right: 0,
             borderRadius: 50,
+            
           }}
         />
       </View>
