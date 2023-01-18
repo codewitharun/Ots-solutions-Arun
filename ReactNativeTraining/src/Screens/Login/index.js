@@ -46,6 +46,7 @@ const Login = ({navigation}) => {
         avatar={
           'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
         }
+        dotRequire={true}
       />
       <TextBox
         getData={getUsers}

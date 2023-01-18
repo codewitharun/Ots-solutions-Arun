@@ -6,7 +6,7 @@ import {styles} from './styles';
 
 const Dashboard = ({navigation}) => {
   function getUsers(response) {
-    console.log('Data From custom Api:', response);
+    // console.log('Data From custom Api:', response);
   }
 
   return (

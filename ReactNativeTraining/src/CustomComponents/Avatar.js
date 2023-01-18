@@ -2,7 +2,7 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const Avatar = ({avatar}) => {
+const Avatar = ({avatar, dotRequire}) => {
   return (
     <View>
       <View style={{marginBottom: 30}}>
@@ -13,21 +13,22 @@ const Avatar = ({avatar}) => {
           }}
           style={styles.ImageStyle}
         />
-        <TouchableOpacity
-          onPress={() => {
-            alert('Choose image from gallary');
-          }}
-          style={{
-            height: 30,
-            width: 30,
-            backgroundColor: 'red',
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            borderRadius: 50,
-            
-          }}
-        />
+        {dotRequire ? (
+          <TouchableOpacity
+            onPress={() => {
+              alert('Choose image from gallary');
+            }}
+            style={{
+              height: 30,
+              width: 30,
+              backgroundColor: 'red',
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              borderRadius: 50,
+            }}
+          />
+        ) : null}
       </View>
     </View>
   );

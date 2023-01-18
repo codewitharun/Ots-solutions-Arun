@@ -50,13 +50,13 @@ function MyTabs(props) {
   }, []);
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
+      <Tab.Screen name={Routes.Dashboard} component={screens.Dashboard} />
       <Tab.Screen name={Routes.Signup} component={screens.Signup} />
       <Tab.Screen
         name={Routes.Profile}
         component={screens.Profile}
         options={{headerShown: true}}
       />
-      <Tab.Screen name={Routes.Dashboard} component={screens.Dashboard} />
     </Tab.Navigator>
   );
 }
