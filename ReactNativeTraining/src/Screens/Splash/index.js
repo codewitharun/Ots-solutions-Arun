@@ -13,7 +13,7 @@ const Splash = props => {
   //   console.log(props);
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate(Routes.BottomTab);
+      props.navigation.replace('Login');
     }, 3000);
   }, []);
 

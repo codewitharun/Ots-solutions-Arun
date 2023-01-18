@@ -1,17 +1,14 @@
-import {
-  StatusBar,
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {StatusBar, ImageBackground} from 'react-native';
 import React from 'react';
+import CustomApi from '../../CustomComponents/CustomApi';
 
-import CustomButton from '../../CustomComponents/CustomButton';
+import {styles} from './styles';
 
-import {Routes} from '../../Route/Route';
 const Dashboard = ({navigation}) => {
+  function getUsers(response) {
+    console.log('Data From custom Api:', response);
+  }
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -20,27 +17,16 @@ const Dashboard = ({navigation}) => {
       }}
       style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
-
-      <CustomButton
-        type={'Pop back Example'}
-        // Rout={Routes.Profile}
-        navigation={navigation.pop}
-      />
-      <CustomButton
-        type={'Go back Example'}
-        // Rout={Routes.Signup}
-        navigation={navigation.goBack}
+      <CustomApi
+        method="get"
+        url="https://reqres.in/api/users"
+        getData={getUsers}
+        // postData={{
+        //   name: 'morpheus',
+        //   job: 'leader',
+        // }}
       />
     </ImageBackground>
   );
 };
 export default Dashboard;
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-
-    // backgroundColor: 'black',
-  },
-});

@@ -14,36 +14,14 @@ import Route from './src/Route';
 import * as Screens from './src/Screens';
 import {Routes} from './src/Route/Route';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
+import CustomApi from './src/CustomComponents/CustomApi';
 // const Drawer =
-const Stack = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 const App = props => {
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-        {
-          text: 'Cancel',
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
-      ]);
-      return true;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
-
-    return () => backHandler.remove();
-  }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: true}}>
-        <Stack.Screen component={Screens.Splash} name={Routes.Splash} />
-        <Stack.Screen component={Route} name={Routes.BottomTab} />
-      </Stack.Navigator>
+      <StatusBar barStyle={'dark-content'} />
+      <Route />
     </NavigationContainer>
   );
 };

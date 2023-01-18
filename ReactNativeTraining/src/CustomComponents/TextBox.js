@@ -1,18 +1,18 @@
 import {StyleSheet, TextInput, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-const TextBox = ({getBoxType, secure, placeHolderText}) => {
+const TextBox = ({getBoxType, secure, placeHolderText, getData}) => {
   const [text, setText] = useState('');
+
   return (
     <View>
       <TextInput
-       
         keyboardType={getBoxType}
         secureTextEntry={secure}
         style={styles.TextInputStyle}
         placeholder={placeHolderText}
         onChangeText={txt => {
-          setText(txt);
+          getData(txt);
         }}
       />
     </View>
