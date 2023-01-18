@@ -1,12 +1,12 @@
 import {StatusBar, ImageBackground} from 'react-native';
 import React from 'react';
 import CustomApi from '../../CustomComponents/CustomApi';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {styles} from './styles';
 
 const Dashboard = ({navigation}) => {
   function getUsers(response) {
-    // console.log('Data From custom Api:', response);
+    console.log('Data From custom Api:', response);
   }
 
   return (
@@ -17,14 +17,15 @@ const Dashboard = ({navigation}) => {
       }}
       style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
+
       <CustomApi
         method="get"
         url="https://reqres.in/api/users"
         getData={getUsers}
-        // postData={{
-        //   name: 'morpheus',
-        //   job: 'leader',
-        // }}
+        postData={{
+          name: 'morpheus',
+          job: 'leader',
+        }}
       />
     </ImageBackground>
   );

@@ -20,28 +20,19 @@ const CustomApi = ({getData, method, url, postData}) => {
           ...postData,
         },
       }).then(response => {
-        getData(response.data), setData(response.data.data);
+        getData(response.data), setData(response.data);
       });
     } catch (error) {
       console.log('Error While Fetching', error);
     }
   }
   return (
-    <View style={{height: '100%', width: '80%'}}>
+    <View style={styles.container}>
       {method == 'get' ? (
         <FlatList
-          data={data}
+          data={data.data}
           renderItem={({item}) => (
-            <View
-              style={{
-                height: 200,
-                backgroundColor: 'white',
-                borderWidth: 1,
-                borderRadius: 6,
-                marginBottom: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+            <View style={styles.getView}>
               <Avatar avatar={item?.avatar} dotRequire={false} />
 
               <Text>
@@ -52,13 +43,7 @@ const CustomApi = ({getData, method, url, postData}) => {
           )}
         />
       ) : (
-        <View
-          style={{
-            height: 100,
-            borderWidth: 1,
-            borderRadius: 6,
-            marginBottom: 10,
-          }}>
+        <View style={styles.postView}>
           <Text>createdAt : {data?.createdAt}</Text>
           <Text>job : {data?.job}</Text>
           <Text>Full Name : {data?.name}</Text>
@@ -70,4 +55,24 @@ const CustomApi = ({getData, method, url, postData}) => {
 
 export default CustomApi;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {height: '100%', width: '80%'},
+  getView: {
+    height: 200,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderRadius: 6,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  postView: {
+    height: 200,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderRadius: 6,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
