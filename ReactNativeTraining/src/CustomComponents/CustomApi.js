@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Avatar from './Avatar';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 const CustomApi = ({getData, method, url, postData}) => {
   //   console.log(postData);
   const [data, setData] = useState([]);
@@ -34,7 +34,6 @@ const CustomApi = ({getData, method, url, postData}) => {
           renderItem={({item}) => (
             <View style={styles.getView}>
               <Avatar avatar={item?.avatar} dotRequire={false} />
-
               <Text>
                 Full Name : {item?.first_name + ' ' + item?.last_name}
               </Text>

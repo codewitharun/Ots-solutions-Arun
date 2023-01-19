@@ -6,12 +6,15 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
-
+import React, {useEffect} from 'react';
+import {apiCall} from '../../Common/callApi';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
 const Profile = ({navigation}) => {
+  useEffect(() => {
+    apiCall();
+  }, []);
   return (
     <ImageBackground
       resizeMode="cover"

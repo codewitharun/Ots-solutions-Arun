@@ -15,21 +15,13 @@ import {Routes} from './Route';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomTab from '../CustomBottomTab';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const Drawer = createDrawerNavigator();
 
 function MyDrawer(props) {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen
-        name="Feed"
-        component={MyTabs}
-        options={{
-          drawerIcon: () => {
-            <Icon name="heart" size={40} color={'red'} />;
-          },
-        }}
-      />
+    <Drawer.Navigator screenOptions={{headerShown: true}}>
+      <Drawer.Screen name="Feed" component={MyTabs} />
       <Drawer.Screen name="Article" component={screens.Signup} />
     </Drawer.Navigator>
   );
@@ -64,7 +56,7 @@ function MyTabs(props) {
         component={screens.Dashboard}
         options={{
           tabBarIcon: () => {
-            <Icon name="rocket" size={30} color={'red'} />;
+            return <Icon name="menu" size={30} />;
           },
         }}
       />
@@ -73,15 +65,18 @@ function MyTabs(props) {
         component={screens.Signup}
         options={{
           tabBarIcon: () => {
-            <Icon name="rocket" size={30} color={'red'} />;
+            return <Icon name="rocket" size={30} />;
           },
-          tabBarLabelPosition: 'beside-icon',
         }}
       />
       <Tab.Screen
         name={Routes.Profile}
         component={screens.Profile}
-        options={{headerShown: true}}
+        options={{
+          tabBarIcon: () => {
+            return <Icon name="face-man-profile" size={30} />;
+          },
+        }}
       />
     </Tab.Navigator>
   );
