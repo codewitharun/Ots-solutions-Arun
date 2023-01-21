@@ -13,7 +13,7 @@ import TextBox from '../../CustomComponents/TextBox';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
-import CustomApi from '../../CustomComponents/CustomApi';
+import {styles} from './styles';
 const Login = ({navigation}) => {
   useEffect(() => {
     // getUsers();
@@ -74,13 +74,3 @@ const Login = ({navigation}) => {
   );
 };
 export default Login;
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
-
-    // backgroundColor: 'black',
-  },
-});

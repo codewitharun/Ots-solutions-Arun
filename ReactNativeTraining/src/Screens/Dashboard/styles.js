@@ -9,4 +9,34 @@ export const styles = StyleSheet.create({
 
     // backgroundColor: 'black',
   },
+  locationView: {
+    height: 100,
+    width: '90%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    borderRadius: 10,
+  },
+  ButtonView: {
+    backgroundColor: 'white',
+    height: 50,
+    width: '70%',
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  imageView: {
+    height: 200,
+    width: '100%',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  textStyle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
 });

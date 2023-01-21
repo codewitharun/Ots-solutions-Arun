@@ -1,6 +1,6 @@
 import {StatusBar, StyleSheet, ImageBackground, Text} from 'react-native';
 import React from 'react';
-
+import {styles} from './styles';
 import Avatar from '../../CustomComponents/Avatar';
 import CustomButton from '../../CustomComponents/CustomButton';
 import TextBox from '../../CustomComponents/TextBox';
@@ -47,12 +47,3 @@ const Signup = ({navigation}) => {
   );
 };
 export default Signup;
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-
-    // backgroundColor: 'black',
-  },
-});

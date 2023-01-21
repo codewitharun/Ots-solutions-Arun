@@ -55,8 +55,8 @@ function MyTabs(props) {
         name={Routes.Dashboard}
         component={screens.Dashboard}
         options={{
-          tabBarIcon: () => {
-            return <Icon name="menu" size={30} />;
+          tabBarIcon: ({size, color}) => {
+            return <Icon name="menu" size={size} color={color} />;
           },
         }}
       />
@@ -64,8 +64,8 @@ function MyTabs(props) {
         name={Routes.Signup}
         component={screens.Signup}
         options={{
-          tabBarIcon: () => {
-            return <Icon name="rocket" size={30} />;
+          tabBarIcon: ({size, color}) => {
+            return <Icon name="rocket" size={size} color={color} />;
           },
         }}
       />
@@ -73,8 +73,8 @@ function MyTabs(props) {
         name={Routes.Profile}
         component={screens.Profile}
         options={{
-          tabBarIcon: () => {
-            return <Icon name="face-man-profile" size={30} />;
+          tabBarIcon: ({color, size}) => {
+            return <Icon name="face-man-profile" size={size} color={color} />;
           },
         }}
       />

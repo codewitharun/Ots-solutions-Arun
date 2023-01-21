@@ -11,10 +11,8 @@ import {apiCall} from '../../Common/callApi';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
+import {styles} from './styles';
 const Profile = ({navigation}) => {
-  useEffect(() => {
-    apiCall();
-  }, []);
   return (
     <ImageBackground
       resizeMode="cover"
@@ -39,12 +37,3 @@ const Profile = ({navigation}) => {
   );
 };
 export default Profile;
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-
-    // backgroundColor: 'black',
-  },
-});
