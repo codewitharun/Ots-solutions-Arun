@@ -21,9 +21,7 @@ const Login = ({navigation}) => {
   }, []);
 
   function getUsers(response) {
-    response.map(users => {
-      console.log('Data From custom Api:', users);
-    });
+    console.log(response);
   }
   async function getUserByFetch() {
     try {
