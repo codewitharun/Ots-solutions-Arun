@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "864000255631",
+    "project_id": "rntraining-b437a",
+    "storage_bucket": "rntraining-b437a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864000255631:android:a84da83b8f08dd893f32fa",
+        "android_client_info": {
+          "package_name": "com.classtraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864000255631-ijh45iso73ie13bc3815c06ju34tqtkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.classtraining",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "864000255631-fqsahlo076j1ptkhlifs8jvhqhptq55g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzdBscE8cGrkwI0bGL62uHg_B_rQ50SCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864000255631-fqsahlo076j1ptkhlifs8jvhqhptq55g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864000255631-sm749670mhi3t9lntifdipeop298adoj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.classTraining"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,19 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
+import {LoginUser} from '../Redux/Actions/Actions';
+import fromReducer from '../Redux/Reducers/Reducers';
 const CustomButton = props => {
   // console.log(props);
+  const dispatch = useDispatch();
+  const {login} = useSelector(state => state.fromReducer);
+  console.log(login.user);
   return (
     <View style={styles.Container}>
       <TouchableOpacity
         onPress={() => {
-          props.navigation
-            ? props.navigation(props.Rout)
-            : alert('Screen navigation not set');
+          dispatch(LoginUser({user: 'Arun'}));
         }}
         style={styles.TouchableView}>
         <Text style={styles.TextStyle}>{props.type}</Text>

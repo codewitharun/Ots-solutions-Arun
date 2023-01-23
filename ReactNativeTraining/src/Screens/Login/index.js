@@ -6,6 +6,8 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  Platform,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -14,24 +16,53 @@ import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
 import {styles} from './styles';
+import {useSelector, useDispatch} from 'react-redux';
+import {LoginUser} from '../../Redux/Actions/Actions';
+import messaging from '@react-native-firebase/messaging';
+
 const Login = ({navigation}) => {
   useEffect(() => {
-    // getUsers();
-    // getUserByFetch();
+    checkPermission();
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
   }, []);
 
-  function getUsers(response) {
-    console.log(response);
-  }
-  async function getUserByFetch() {
-    try {
-      let response = await fetch('https://jsonplaceholder.typicode.com/users');
-      let resJson = await response.json();
-      console.log(resJson.email);
-    } catch (error) {
-      console.log(error);
+  const checkPermission = async () => {
+    if (Platform.OS === 'android') {
+      getToken();
+    } else {
+      const enabled = await messaging().hasPermission();
+      // If Premission granted proceed towards token fetch
+      if (enabled == 1) {
+        getToken();
+      } else {
+        // If permission hasn’t been granted to our app, request user in requestPermission method.
+        requestPermission();
+      }
     }
-  }
+  };
+
+  const requestPermission = async () => {
+    try {
+      await messaging().requestPermission();
+      // User has authorised
+      getToken();
+    } catch (error) {
+      // User has rejected permissions
+      console.log('permission rejected');
+    }
+  };
+
+  const getToken = async () => {
+    let fcmToken = await messaging().getToken();
+    console.log('Token:: ', fcmToken);
+  };
+
+  const dispatch = useDispatch();
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -47,13 +78,11 @@ const Login = ({navigation}) => {
         dotRequire={true}
       />
       <TextBox
-        getData={getUsers}
         getBoxType={'email-address'}
         secure={false}
         placeHolderText={'Enter Your Email'}
       />
       <TextBox
-        getData={getUsers}
         getBoxType={'numeric'}
         secure={true}
         placeHolderText={'Enter Your Password'}

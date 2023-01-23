@@ -18,9 +18,15 @@ import * as Screens from './src/Screens';
 import {Routes} from './src/Route/Route';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomApi from './src/CustomComponents/CustomApi';
+import messaging from '@react-native-firebase/messaging';
 // const Drawer =
 const Stack = createNativeStackNavigator();
 const App = props => {
+  // Register background handler
+  messaging().setBackgroundMessageHandler(async remoteMessage => {
+    console.log('Message handled in the background!', remoteMessage);
+  });
+
   return (
     <Provider store={store}>
       <NavigationContainer>

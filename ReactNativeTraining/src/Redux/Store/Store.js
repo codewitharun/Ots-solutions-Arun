@@ -10,4 +10,4 @@ import fromReducer from '../Reducers/Reducers';
 const rootReducer = combineReducers({
   fromReducer,
 });
-export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
+export const store = legacy_createStore(rootReducer);
