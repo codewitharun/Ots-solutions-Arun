@@ -71,12 +71,14 @@ const Login = ({navigation}) => {
       }}
       style={styles.container}>
       {/* <StatusBar barStyle={'light-content'} backgroundColor={'blue'} /> */}
-      <Avatar
-        avatar={
-          'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
-        }
-        dotRequire={true}
-      />
+      <View style={styles.imageView}>
+        <Avatar
+          avatar={
+            'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
+          }
+          dotRequire={true}
+        />
+      </View>
       <TextBox
         getBoxType={'email-address'}
         secure={false}

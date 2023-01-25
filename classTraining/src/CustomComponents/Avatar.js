@@ -5,7 +5,7 @@ import React from 'react';
 const Avatar = ({avatar, dotRequire}) => {
   return (
     <View>
-      <View style={{marginBottom: 30}}>
+      <View>
         <Image
           resizeMode="cover"
           source={{

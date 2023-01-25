@@ -29,16 +29,11 @@ const Dashboard = props => {
       const {code, message} = error;
       // console.warn(code, message);
     });
-  useEffect(() => {
-    // const response = apiCall({
-    //   method: 'get',
-    //   url: 'https://reqres.in/api/users',
-    // });
-    // return console.log(response);
-  }, []);
+
   async function openGallery() {
     await launchImageLibrary()
       .then(res => {
+        console.log('after gallery pic', res.assets);
         setImage(res);
       })
       .catch(err => {
@@ -49,6 +44,7 @@ const Dashboard = props => {
     await launchCamera()
       .then(res => {
         // console.log(res);
+        console.log('after camera pick', res);
         setImage(res);
       })
       .catch(err => {
@@ -69,7 +65,7 @@ const Dashboard = props => {
           <Text>Long:{location.longitude}</Text>
         </View>
       )}
-      {image && (
+      {image && image?.assets && (
         <View style={styles.imageView}>
           <Avatar avatar={image.assets[0].uri} />
         </View>

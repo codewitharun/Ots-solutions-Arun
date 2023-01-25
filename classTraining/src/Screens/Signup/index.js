@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, ImageBackground, Text} from 'react-native';
+import {StatusBar, StyleSheet, ImageBackground, Text, View} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import Avatar from '../../CustomComponents/Avatar';
@@ -14,12 +14,13 @@ const Signup = ({navigation}) => {
       }}
       style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
-
-      <Avatar
-        avatar={
-          'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
-        }
-      />
+      <View style={styles.imageView}>
+        <Avatar
+          avatar={
+            'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
+          }
+        />
+      </View>
 
       <TextBox
         getBoxType={'email-address'}

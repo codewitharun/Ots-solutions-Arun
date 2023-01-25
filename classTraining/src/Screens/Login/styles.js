@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
 
     // backgroundColor: 'black',
   },
+  imageView: {
+    marginBottom: 30,
+  },
 });

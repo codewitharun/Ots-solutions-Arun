@@ -28,12 +28,14 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   imageView: {
-    height: 200,
-    width: '100%',
+    height: 140,
+    width: '70%',
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+    borderRadius: 10,
+    // opacity: 0.3,
   },
   textStyle: {
     fontWeight: 'bold',
