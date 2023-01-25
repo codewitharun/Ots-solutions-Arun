@@ -62,7 +62,9 @@ const Login = ({navigation}) => {
   };
 
   const dispatch = useDispatch();
-
+  function getText(text) {
+    console.log(text);
+  }
   return (
     <ImageBackground
       resizeMode="cover"
@@ -82,11 +84,14 @@ const Login = ({navigation}) => {
       <TextBox
         getBoxType={'email-address'}
         secure={false}
+        getText={getText}
+        
         placeHolderText={'Enter Your Email'}
       />
       <TextBox
         getBoxType={'numeric'}
         secure={true}
+        getText={getText}
         placeHolderText={'Enter Your Password'}
       />
       <CustomButton

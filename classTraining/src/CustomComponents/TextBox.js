@@ -1,9 +1,11 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-const TextBox = ({getBoxType, secure, placeHolderText, getData}) => {
+const TextBox = ({getBoxType, secure, placeHolderText, getData, getText}) => {
   const [text, setText] = useState('');
-
+  useEffect(() => {
+    getText({login: text});
+  }, [text]);
   return (
     <View>
       <TextInput
@@ -11,8 +13,16 @@ const TextBox = ({getBoxType, secure, placeHolderText, getData}) => {
         secureTextEntry={secure}
         style={styles.TextInputStyle}
         placeholder={placeHolderText}
-        onChangeText={txt => {
-          getData(txt);
+        // onChangeText={txt => {
+        onKeyPress={e => {
+          );
+        }}
+        // }}
+        // onSubmitEditing={event => {
+        //   console.log(event.nativeEvent);
+        // }}
+        onEndEditing={event => {
+          setText(event.nativeEvent.text);
         }}
       />
     </View>
