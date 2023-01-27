@@ -16,7 +16,8 @@ const Avatar = ({avatar, dotRequire}) => {
         {dotRequire ? (
           <TouchableOpacity
             onPress={() => {
-              alert('Choose image from gallary');
+              alert('Choose image from gallary');.
+              
             }}
             style={{
               height: 30,

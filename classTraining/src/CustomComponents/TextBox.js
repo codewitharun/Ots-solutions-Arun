@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 const TextBox = ({getBoxType, secure, placeHolderText, getData, getText}) => {
   const [text, setText] = useState('');
   useEffect(() => {
-    getText({login: text});
+    // getText({login: text});
   }, [text]);
   return (
     <View>
@@ -14,9 +14,6 @@ const TextBox = ({getBoxType, secure, placeHolderText, getData, getText}) => {
         style={styles.TextInputStyle}
         placeholder={placeHolderText}
         // onChangeText={txt => {
-        onKeyPress={e => {
-          );
-        }}
         // }}
         // onSubmitEditing={event => {
         //   console.log(event.nativeEvent);

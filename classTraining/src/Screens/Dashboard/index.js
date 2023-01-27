@@ -60,12 +60,12 @@ const Dashboard = props => {
       style={styles.container}>
       {location && (
         <View style={styles.locationView}>
-          <Text>you are here</Text>
-          <Text>Lat:{location.latitude}</Text>
-          <Text>Long:{location.longitude}</Text>
+          <Text style={styles.locTextColor}>you are here</Text>
+          <Text style={styles.locTextColor}>Lat:{location.latitude}</Text>
+          <Text style={styles.locTextColor}>Long:{location.longitude}</Text>
         </View>
       )}
-      {image && image?.assets && (
+      {image  && image?.assets && (
         <View style={styles.imageView}>
           <Avatar avatar={image.assets[0].uri} />
         </View>
