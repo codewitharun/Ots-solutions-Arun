@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -8,16 +8,29 @@ const CustomButton = props => {
   // console.log(props);
   const dispatch = useDispatch();
   const {login} = useSelector(state => state.fromReducer);
-  console.log(login.user);
+  function handleClick() {
+    // console.log(props.validate);
+    if (props?.validate) {
+      if (props?.validate?.username === 'Arun@gmail.com') {
+        console.log('validation matches username');
+        props.navigation(props.Rout);
+      } else {
+        Alert.alert('Pease enter Arunk4it@gmail.com to proceed to the app');
+      }
+    } else {
+      console.log(
+        'validation not found , performing rout operation please wait ',
+      );
+
+      props.navigation(props.Rout);
+    }
+  }
   return (
     <View style={styles.Container}>
       <TouchableOpacity
-        onPress={() => {
-          props.navigation(props.Rout);
-          dispatch(LoginUser({user: 'Arun'}));
-        }}
+        onPress={props.handlePress}
         style={styles.TouchableView}>
-        <Text style={styles.TextStyle}>{props.type}</Text>
+        <Text style={styles.TextStyle}>{props.name}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -19,7 +19,7 @@ import CustomTab from '../CustomBottomTab';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const Drawer = createDrawerNavigator();
 
-function MyDrawer(props) {
+export function MyDrawer(props) {
   return (
     <Drawer.Navigator screenOptions={{headerShown: true}}>
       <Drawer.Screen name="Feed" component={MyTabs} />
@@ -88,7 +88,10 @@ const Route = ({navigation}) => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Splash" component={screens.Splash} />
-      <Stack.Screen name="Login" component={screens.Login} />
+      <Stack.Screen name={Routes.Login} component={screens.Login} />
+
+      <Stack.Screen name={Routes.Signup} component={screens.Signup} />
+
       <Stack.Screen name={Routes.BottomTab} component={MyTabs} />
       <Stack.Screen name="Drawer" component={MyDrawer} />
     </Stack.Navigator>

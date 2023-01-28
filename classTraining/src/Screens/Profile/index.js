@@ -6,13 +6,41 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import auth from '@react-native-firebase/auth';
+import React, {useEffect, useState} from 'react';
 import {apiCall} from '../../Common/callApi';
 import CustomButton from '../../CustomComponents/CustomButton';
 import Avatar from '../../CustomComponents/Avatar';
 import {Routes} from '../../Route/Route';
 import {styles} from './styles';
+import firestore from '@react-native-firebase/firestore';
+import TextBox from '../../CustomComponents/TextBox';
 const Profile = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  useEffect(() => {
+    getData();
+  }, []);
+
+  function getData() {
+    firestore()
+      .collection('Users')
+      .get()
+      .then(querySnapshot => {
+        console.log('Total users: ', querySnapshot.size);
+        querySnapshot.forEach(data => {
+          console.log(data.data());
+        });
+        // querySnapshot.forEach(documentSnapshot => {
+        //   console.log(
+        //     'User ID: ',
+        //     documentSnapshot.id,
+        //     documentSnapshot.data(),
+        //   );
+        // });
+      });
+  }
   return (
     <ImageBackground
       resizeMode="cover"
@@ -22,16 +50,42 @@ const Profile = ({navigation}) => {
       style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
 
-      <Avatar
-        avatar={
-          'https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png'
-        }
+      <TextBox
+        value={name}
+        onChangeText={t => setName(t)}
+        getBoxType={'default'}
+        secure={false}
+        // getText={getText}
+        placeHolderText={'Enter Your Name'}
+      />
+      <TextBox
+        value={email}
+        onChangeText={t => setEmail(t)}
+        getBoxType={'email-address'}
+        secure={false}
+        // getText={getText}
+        placeHolderText={'Enter Your Email'}
+      />
+      <TextBox
+        value={phone}
+        onChangeText={t => setPhone(t)}
+        getBoxType={'phone-pad'}
+        secure={false}
+        // getText={getText}
+        placeHolderText={'Enter Your Phone Number'}
       />
 
+      <CustomButton name={'Store to Firestore'} handlePress={() => setData()} />
       <CustomButton
-        type={'Navigate to Dashboard '}
-        navigation={navigation.navigate}
-        Rout={Routes.Dashboard}
+        name={'Sign Out'}
+        handlePress={() => {
+          auth()
+            .signOut()
+            .then(() => {
+              console.log('User signed out!');
+              navigation.navigate('Splash');
+            });
+        }}
       />
     </ImageBackground>
   );

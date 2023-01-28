@@ -14,7 +14,7 @@ import {apiCall} from '../../Common/callApi';
 import GetLocation from 'react-native-get-location';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import Avatar from '../../CustomComponents/Avatar';
-
+import CustomButton from '../../CustomComponents/CustomButton';
 const Dashboard = props => {
   const [location, setLocation] = useState(null);
   const [image, setImage] = useState(null);
@@ -33,7 +33,7 @@ const Dashboard = props => {
   async function openGallery() {
     await launchImageLibrary()
       .then(res => {
-        console.log('after gallery pic', res.assets);
+        // console.log('after gallery pic', res.assets);
         setImage(res);
       })
       .catch(err => {
@@ -44,7 +44,7 @@ const Dashboard = props => {
     await launchCamera()
       .then(res => {
         // console.log(res);
-        console.log('after camera pick', res);
+        // console.log('after camera pick', res);
         setImage(res);
       })
       .catch(err => {
@@ -65,25 +65,24 @@ const Dashboard = props => {
           <Text style={styles.locTextColor}>Long:{location.longitude}</Text>
         </View>
       )}
-      {image  && image?.assets && (
+      {image && image?.assets && (
         <View style={styles.imageView}>
           <Avatar avatar={image.assets[0].uri} />
         </View>
       )}
-      <TouchableOpacity
-        style={styles.ButtonView}
-        onPress={() => {
+      <CustomButton
+        name={'Open Gallery'}
+        handlePress={() => {
           openGallery();
-        }}>
-        <Text style={styles.textStyle}>Open Gallery</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.ButtonView}
-        onPress={() => {
+        }}
+      />
+
+      <CustomButton
+        name={'Open Camera'}
+        handlePress={() => {
           launchFrontCamera();
-        }}>
-        <Text style={styles.textStyle}>Open Camera</Text>
-      </TouchableOpacity>
+        }}
+      />
     </ImageBackground>
   );
 };

@@ -1,26 +1,16 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-const TextBox = ({getBoxType, secure, placeHolderText, getData, getText}) => {
-  const [text, setText] = useState('');
-  useEffect(() => {
-    // getText({login: text});
-  }, [text]);
+const TextBox = props => {
   return (
     <View>
       <TextInput
-        keyboardType={getBoxType}
-        secureTextEntry={secure}
+        onChangeText={props.onChangeText}
+        value={props.value}
+        keyboardType={props.getBoxType}
+        secureTextEntry={props.secure}
         style={styles.TextInputStyle}
-        placeholder={placeHolderText}
-        // onChangeText={txt => {
-        // }}
-        // onSubmitEditing={event => {
-        //   console.log(event.nativeEvent);
-        // }}
-        onEndEditing={event => {
-          setText(event.nativeEvent.text);
-        }}
+        placeholder={props.placeHolderText}
       />
     </View>
   );
