@@ -11,6 +11,7 @@ const TextBox = props => {
         secureTextEntry={props.secure}
         style={styles.TextInputStyle}
         placeholder={props.placeHolderText}
+        placeholderTextColor={'gray'}
       />
     </View>
   );
@@ -25,5 +26,6 @@ const styles = StyleSheet.create({
     width: 300,
     paddingLeft: 20,
     marginBottom: 30,
+    color: 'black',
   },
 });

@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+} from 'react-native';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -30,7 +37,11 @@ const CustomButton = props => {
       <TouchableOpacity
         onPress={props.handlePress}
         style={styles.TouchableView}>
-        <Text style={styles.TextStyle}>{props.name}</Text>
+        {props.loading ? (
+          <ActivityIndicator size={30} color={'red'} />
+        ) : (
+          <Text style={styles.TextStyle}>{props.name}</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

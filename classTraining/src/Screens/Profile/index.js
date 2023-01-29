@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Text,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import React, {useEffect, useState} from 'react';
@@ -15,23 +16,40 @@ import {Routes} from '../../Route/Route';
 import {styles} from './styles';
 import firestore from '@react-native-firebase/firestore';
 import TextBox from '../../CustomComponents/TextBox';
+import {FlatList} from 'react-native-gesture-handler';
 const Profile = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [name, setName] = useState('');
+  const [user, setUser] = useState([]);
+  const [otherUsers, setOtherUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState('');
   useEffect(() => {
     getData();
   }, []);
 
-  function getData() {
-    firestore()
+  async function getData() {
+    const usersfrom = await firestore()
       .collection('Users')
+      // .doc(auth().currentUser.uid)
       .get()
       .then(querySnapshot => {
+        let otherUsers = [];
+        let currentUser = [];
         console.log('Total users: ', querySnapshot.size);
+        setCount(querySnapshot.size);
         querySnapshot.forEach(data => {
-          console.log(data.data());
+          if (data.id.match(auth().currentUser.uid)) {
+            // console.log('User: ', data.data(), data.id);
+            currentUser.push(data.data());
+            setUser(currentUser);
+          } else {
+            // console.log(data.data());
+            otherUsers.push(data.data());
+            setOtherUsers(otherUsers);
+          }
+          // console.log(data.data());
+          // console.log(users);
         });
+
         // querySnapshot.forEach(documentSnapshot => {
         //   console.log(
         //     'User ID: ',
@@ -41,6 +59,19 @@ const Profile = ({navigation}) => {
         // });
       });
   }
+
+  async function signOutFunc() {
+    setLoading(true);
+    setTimeout(() => {
+      auth()
+        .signOut()
+        .then(() => {
+          console.log('User signed out!');
+          navigation.navigate('Splash');
+        });
+      setLoading(false);
+    }, 3000);
+  }
   return (
     <ImageBackground
       resizeMode="cover"
@@ -48,43 +79,37 @@ const Profile = ({navigation}) => {
         uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
       }}
       style={styles.container}>
-      <StatusBar barStyle={'light-content'} backgroundColor={'blue'} />
-
-      <TextBox
-        value={name}
-        onChangeText={t => setName(t)}
-        getBoxType={'default'}
-        secure={false}
-        // getText={getText}
-        placeHolderText={'Enter Your Name'}
-      />
-      <TextBox
-        value={email}
-        onChangeText={t => setEmail(t)}
-        getBoxType={'email-address'}
-        secure={false}
-        // getText={getText}
-        placeHolderText={'Enter Your Email'}
-      />
-      <TextBox
-        value={phone}
-        onChangeText={t => setPhone(t)}
-        getBoxType={'phone-pad'}
-        secure={false}
-        // getText={getText}
-        placeHolderText={'Enter Your Phone Number'}
-      />
-
-      <CustomButton name={'Store to Firestore'} handlePress={() => setData()} />
+      {/* <StatusBar barStyle={'light-content'} backgroundColor={'blue'} /> */}
+      <View style={styles.flatListView}>
+        <Text style={styles.textStyle}>Current Login user </Text>
+        {user.map(item => (
+          <View style={styles.currentUserView}>
+            <Text style={styles.textStyle1}>ID: {auth().currentUser.uid}</Text>
+            <Text style={styles.textStyle1}>Name: {item?.name}</Text>
+            <Text style={styles.textStyle1}>Phone: {item?.phone}</Text>
+            <Text style={styles.textStyle1}>Email: {item?.email}</Text>
+          </View>
+        ))}
+        <Text style={styles.textStyle}>other users in firestore</Text>
+        <FlatList
+          style={styles.flatListStyle}
+          data={otherUsers}
+          renderItem={({item}) => {
+            return (
+              <View style={styles.flatListContainer}>
+                <Text style={styles.textStyle}>Name: {item?.name}</Text>
+                {/* <Text style={styles.textStyle}>Phone: {item?.phone}</Text>
+                <Text style={styles.textStyle}>Email: {item?.email}</Text> */}
+              </View>
+            );
+          }}
+        />
+      </View>
       <CustomButton
         name={'Sign Out'}
+        loading={loading}
         handlePress={() => {
-          auth()
-            .signOut()
-            .then(() => {
-              console.log('User signed out!');
-              navigation.navigate('Splash');
-            });
+          signOutFunc();
         }}
       />
     </ImageBackground>

@@ -24,6 +24,7 @@ import messaging from '@react-native-firebase/messaging';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     checkPermission();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -84,22 +85,31 @@ const Login = ({navigation}) => {
     }
   }
   function loginUser() {
-    auth()
-      .signInWithEmailAndPassword(username, password)
-      .then(() => {
-        navigation.navigate('Drawer');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
+    setLoading(true);
+    if (username === '' || password === '') {
+      Alert.alert('Please enter username & password');
+      setLoading(false);
+    } else {
+      setTimeout(() => {
+        auth()
+          .signInWithEmailAndPassword(username, password)
+          .then(() => {
+            navigation.navigate('Drawer');
+          })
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              console.log('That email address is already in use!');
+            }
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
+            if (error.code === 'auth/invalid-email') {
+              console.log('That email address is invalid!');
+            }
 
-        console.error(error);
-      });
+            console.error(error);
+          });
+        setLoading(false);
+      }, 3000);
+    }
   }
   return (
     <ImageBackground
@@ -133,7 +143,11 @@ const Login = ({navigation}) => {
         // getText={getText}
         placeHolderText={'Enter Your Password'}
       />
-      <CustomButton name={Routes.Login} handlePress={loginUser} />
+      <CustomButton
+        loading={loading}
+        name={Routes.Login}
+        handlePress={loginUser}
+      />
       <CustomButton
         name={Routes.Signup}
         handlePress={() => navigation.navigate(Routes.Signup)}

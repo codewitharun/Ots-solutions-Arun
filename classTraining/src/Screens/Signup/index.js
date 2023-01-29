@@ -13,34 +13,37 @@ const Signup = ({navigation}) => {
   const [phone, setPhone] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   function signupUser() {
-    firestore()
-      .collection('Users')
-      .add({
-        name: name,
-        phone: phone,
-        email: username,
-      })
-      .then(() => {
-        console.log('User added!');
-        auth()
-          .createUserWithEmailAndPassword(username, password)
-          .then(() => {
-            navigation.navigate('Drawer');
-          })
-          .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-              console.log('That email address is already in use!');
-            }
-
-            if (error.code === 'auth/invalid-email') {
-              console.log('That email address is invalid!');
-            }
-
-            console.error(error);
+    setLoading(true);
+    setTimeout(() => {
+      auth()
+        .createUserWithEmailAndPassword(username, password)
+        .then(() => {
+          firestore().collection('Users').doc(auth().currentUser.uid).set({
+            name: name,
+            phone: phone,
+            email: username,
           });
-      });
+        })
+        .then(() => {
+          console.log('User added!');
+          navigation.navigate('Drawer');
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+          }
+
+          console.error(error);
+        });
+      setLoading(false);
+    }, 4000);
   }
   return (
     <ImageBackground
@@ -72,7 +75,7 @@ const Signup = ({navigation}) => {
         getBoxType={'email-address'}
         secure={false}
         // getText={getText}
-        placeHolderText={'Enter Your Email'}
+        placeHolderText={'Enter Your Email address'}
       />
 
       <TextBox
@@ -101,6 +104,7 @@ const Signup = ({navigation}) => {
       />
       <CustomButton
         name={Routes.Signup}
+        loading={loading}
         handlePress={() => {
           signupUser();
         }}

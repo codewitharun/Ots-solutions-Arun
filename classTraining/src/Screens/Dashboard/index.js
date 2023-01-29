@@ -5,6 +5,7 @@ import {
   Text,
   Image,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CustomApi from '../../CustomComponents/CustomApi';
@@ -18,18 +19,20 @@ import CustomButton from '../../CustomComponents/CustomButton';
 const Dashboard = props => {
   const [location, setLocation] = useState(null);
   const [image, setImage] = useState(null);
-  GetLocation.getCurrentPosition({
-    enableHighAccuracy: true,
-    timeout: 15000,
-  })
-    .then(location => {
-      setLocation(location);
+  const [loading, setLoading] = useState(false);
+  async function GetPosition() {
+    await GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 15000,
     })
-    .catch(error => {
-      const {code, message} = error;
-      // console.warn(code, message);
-    });
-
+      .then(location => {
+        setLocation(location);
+      })
+      .catch(error => {
+        const {code, message} = error;
+        // console.warn(code, message);
+      });
+  }
   async function openGallery() {
     await launchImageLibrary()
       .then(res => {
@@ -51,6 +54,10 @@ const Dashboard = props => {
         console.log(err);
       });
   }
+  useEffect(() => {
+    GetPosition();
+  }, []);
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -58,11 +65,22 @@ const Dashboard = props => {
         uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
       }}
       style={styles.container}>
-      {location && (
+      {location ? (
         <View style={styles.locationView}>
           <Text style={styles.locTextColor}>you are here</Text>
           <Text style={styles.locTextColor}>Lat:{location.latitude}</Text>
           <Text style={styles.locTextColor}>Long:{location.longitude}</Text>
+        </View>
+      ) : (
+        <View style={styles.locationView}>
+          <ActivityIndicator size={40} color={'red'} />
+          <CustomButton
+            loading={loading}
+            name={'Reload location'}
+            handlePress={() => {
+              GetPosition();
+            }}
+          />
         </View>
       )}
       {image && image?.assets && (
@@ -70,6 +88,11 @@ const Dashboard = props => {
           <Avatar avatar={image.assets[0].uri} />
         </View>
       )}
+      {loading ? (
+        <View style={styles.imageView}>
+          <ActivityIndicator size={40} color={'red'} />
+        </View>
+      ) : null}
       <CustomButton
         name={'Open Gallery'}
         handlePress={() => {

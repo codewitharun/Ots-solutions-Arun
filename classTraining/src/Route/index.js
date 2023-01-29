@@ -62,8 +62,8 @@ function MyTabs(props) {
         }}
       />
       <Tab.Screen
-        name={Routes.Signup}
-        component={screens.Signup}
+        name={Routes.Users}
+        component={screens.Users}
         options={{
           tabBarIcon: ({size, color}) => {
             return <Icon name="rocket" size={size} color={color} />;
