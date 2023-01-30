@@ -45,4 +45,12 @@ export const styles = StyleSheet.create({
   locTextColor: {
     color: 'black',
   },
+  ring: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderColor: 'tomato',
+    borderWidth: 10,
+  },
 });

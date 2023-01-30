@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   flatListView: {
     height: '80%',
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255, 255, 255, 0.5);',
     marginBottom: 15,
     width: '90%',
     justifyContent: 'space-between',

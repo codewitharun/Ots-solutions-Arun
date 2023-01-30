@@ -20,11 +20,17 @@ import {styles} from './styles';
 import {useSelector, useDispatch} from 'react-redux';
 import {LoginUser} from '../../Redux/Actions/Actions';
 import messaging from '@react-native-firebase/messaging';
-
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import firestore from '@react-native-firebase/firestore';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  GoogleSignin.configure({
+    webClientId:
+      '864000255631-fqsahlo076j1ptkhlifs8jvhqhptq55g.apps.googleusercontent.com',
+  });
+
   useEffect(() => {
     checkPermission();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -111,6 +117,22 @@ const Login = ({navigation}) => {
       }, 3000);
     }
   }
+  async function onGoogleButtonPress() {
+    // Check if your device supports Google Play
+    try {
+      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+      // Get the users ID token
+      const {idToken} = await GoogleSignin.signIn();
+
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <ImageBackground
       resizeMode="cover"
@@ -138,7 +160,7 @@ const Login = ({navigation}) => {
       <TextBox
         value={password}
         onChangeText={t => setPassword(t)}
-        getBoxType={'numeric'}
+        getBoxType={'default'}
         secure={true}
         // getText={getText}
         placeHolderText={'Enter Your Password'}
@@ -151,6 +173,22 @@ const Login = ({navigation}) => {
       <CustomButton
         name={Routes.Signup}
         handlePress={() => navigation.navigate(Routes.Signup)}
+      />
+      <CustomButton
+        name={'Google SignIn'}
+        handlePress={() => {
+          onGoogleButtonPress().then(async () => {
+            console.log(auth().currentUser.email);
+            await firestore()
+              .collection('Users')
+              .doc(auth().currentUser.uid)
+              .set({
+                name: auth().currentUser?.displayName,
+                phone: 3453456456,
+                email: auth().currentUser?.email,
+              });
+          });
+        }}
       />
     </ImageBackground>
   );

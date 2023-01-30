@@ -2,15 +2,15 @@ import {StyleSheet, Dimensions} from 'react-native';
 const {height, width} = Dimensions.get('screen');
 export const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     height: height * 1,
     width: width * 1,
     // backgroundColor: 'black',
   },
   flatListView: {
-    height: '60%',
-    backgroundColor: 'white',
+    height: '70%',
+    backgroundColor: 'rgba(255, 255, 255, 0.6);',
     marginBottom: 15,
     width: '90%',
     justifyContent: 'space-between',
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   textStyle: {
     color: 'black',
     fontWeight: 'bold',
-    lineHeight: 30,
+    lineHeight: 15,
   },
   textStyle1: {
     color: 'green',

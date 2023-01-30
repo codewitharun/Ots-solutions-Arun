@@ -6,6 +6,7 @@ import {
   Image,
   View,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CustomApi from '../../CustomComponents/CustomApi';
@@ -16,6 +17,9 @@ import GetLocation from 'react-native-get-location';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import Avatar from '../../CustomComponents/Avatar';
 import CustomButton from '../../CustomComponents/CustomButton';
+import Animated from 'react-native-reanimated';
+import Ring from '../../CustomComponents/Ring';
+
 const Dashboard = props => {
   const [location, setLocation] = useState(null);
   const [image, setImage] = useState(null);
@@ -30,7 +34,14 @@ const Dashboard = props => {
       })
       .catch(error => {
         const {code, message} = error;
-        // console.warn(code, message);
+        console.log(code, message);
+        if (code == 'UNAUTHORIZED') {
+          Alert.alert(
+            code,
+            'Please Check Location Permission in device setting',
+            message,
+          );
+        }
       });
   }
   async function openGallery() {
@@ -62,9 +73,11 @@ const Dashboard = props => {
     <ImageBackground
       resizeMode="cover"
       source={{
-        uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
+        uri: 'https://wallpapers.com/images/featured/58g8gv3r23zg29kw.jpg',
       }}
+      blurRadius={4}
       style={styles.container}>
+  
       {location ? (
         <View style={styles.locationView}>
           <Text style={styles.locTextColor}>you are here</Text>
@@ -73,7 +86,11 @@ const Dashboard = props => {
         </View>
       ) : (
         <View style={styles.locationView}>
-          <ActivityIndicator size={40} color={'red'} />
+          <Ring delay={0} />
+          <Ring delay={1000} />
+          <Ring delay={2000} />
+          <Ring delay={3000} />
+
           <CustomButton
             loading={loading}
             name={'Reload location'}

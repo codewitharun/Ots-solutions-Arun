@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'black',
   },
   activityView: {
-    backgroundColor: 'white',
-    height: 60,
+    backgroundColor: 'rgba(212,321,123,0.5)',
+    height: 200,
     width: 100,
     justifyContent: 'center',
   },

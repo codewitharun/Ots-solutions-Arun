@@ -7,27 +7,18 @@ const Users = ({navigation}) => {
   const [usersInFire, setUsersInFire] = useState({});
   const [count, setCount] = useState(0);
   async function getUsers() {
-    const usersFromFirestore = await firestore()
-      .collection('Users')
+    await firestore()
+      .collection('SendMessage')
       .get()
       .then(querySnapshot => {
         let user = [];
-        console.log('Total users: ', querySnapshot.size);
+        // console.log('Total users: ', querySnapshot.size);
         setCount(querySnapshot.size);
         querySnapshot.forEach(data => {
+          // console.log(data);
           user.push(data.data());
           setUsersInFire(user);
-          // console.log(data.data());
-          // console.log(users);
         });
-
-        // querySnapshot.forEach(documentSnapshot => {
-        //   console.log(
-        //     'User ID: ',
-        //     documentSnapshot.id,
-        //     documentSnapshot.data(),
-        //   );
-        // });
       });
   }
   useEffect(() => {
@@ -39,9 +30,10 @@ const Users = ({navigation}) => {
   return (
     <ImageBackground
       style={styles.container}
+      blurRadius={20}
       resizeMode="cover"
       source={{
-        uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
+        uri: 'https://wallpapers.com/images/featured/58g8gv3r23zg29kw.jpg',
       }}>
       <View style={styles.flatListView}>
         <Text style={styles.textStyle}>

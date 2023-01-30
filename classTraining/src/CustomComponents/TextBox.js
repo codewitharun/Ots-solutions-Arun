@@ -5,6 +5,7 @@ const TextBox = props => {
   return (
     <View>
       <TextInput
+        maxLength={props.maxLength}
         onChangeText={props.onChangeText}
         value={props.value}
         keyboardType={props.getBoxType}

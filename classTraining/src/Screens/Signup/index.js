@@ -89,7 +89,7 @@ const Signup = ({navigation}) => {
       <TextBox
         value={password}
         onChangeText={t => setPassword(t)}
-        getBoxType={'numeric'}
+        getBoxType={'default'}
         secure={true}
         // getText={getText}
         placeHolderText={'Enter Your Password'}
@@ -97,7 +97,7 @@ const Signup = ({navigation}) => {
       <TextBox
         value={confirmPassword}
         onChangeText={t => setConfirmPassword(t)}
-        getBoxType={'numeric'}
+        getBoxType={'default'}
         secure={true}
         // getText={getText}
         placeHolderText={'Confirm Password'}

@@ -2,6 +2,7 @@ export const Routes = {
   Login: 'Login',
   Signup: 'Signup',
   Dashboard: 'Dashboard',
+  SetData: 'SetData',
   Profile: 'Profile',
   Users: 'Users',
   Splash: 'Splash',

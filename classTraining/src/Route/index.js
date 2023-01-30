@@ -8,7 +8,6 @@ import {
   BackHandler,
 } from 'react-native';
 import React, {useEffect} from 'react';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as screens from '../Screens/index';
@@ -22,8 +21,11 @@ const Drawer = createDrawerNavigator();
 export function MyDrawer(props) {
   return (
     <Drawer.Navigator screenOptions={{headerShown: true}}>
-      <Drawer.Screen name="Feed" component={MyTabs} />
-      <Drawer.Screen name="Article" component={screens.Signup} />
+      <Drawer.Screen name="Main Screen" component={MyTabs} />
+      <Drawer.Screen
+        name={Routes.SetData}
+        component={screens.SendDataToFirestore}
+      />
     </Drawer.Navigator>
   );
 }
@@ -59,6 +61,8 @@ function MyTabs(props) {
           tabBarIcon: ({size, color}) => {
             return <Icon name="menu" size={size} color={color} />;
           },
+          tabBarStyle: {backgroundColor: 'black'},
+          tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15},
         }}
       />
       <Tab.Screen
@@ -68,6 +72,8 @@ function MyTabs(props) {
           tabBarIcon: ({size, color}) => {
             return <Icon name="rocket" size={size} color={color} />;
           },
+          tabBarStyle: {backgroundColor: 'black'},
+          tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15},
         }}
       />
       <Tab.Screen
@@ -77,6 +83,8 @@ function MyTabs(props) {
           tabBarIcon: ({color, size}) => {
             return <Icon name="face-man-profile" size={size} color={color} />;
           },
+          tabBarStyle: {backgroundColor: 'black'},
+          tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15},
         }}
       />
     </Tab.Navigator>

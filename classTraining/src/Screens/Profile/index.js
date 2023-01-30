@@ -34,7 +34,7 @@ const Profile = ({navigation}) => {
       .then(querySnapshot => {
         let otherUsers = [];
         let currentUser = [];
-        console.log('Total users: ', querySnapshot.size);
+        // console.log('Total users: ', querySnapshot.size);
         setCount(querySnapshot.size);
         querySnapshot.forEach(data => {
           if (data.id.match(auth().currentUser.uid)) {
@@ -75,15 +75,16 @@ const Profile = ({navigation}) => {
   return (
     <ImageBackground
       resizeMode="cover"
+      blurRadius={7}
       source={{
-        uri: 'https://s-media-cache-ak0.pinimg.com/236x/c5/d2/39/c5d23931fbc079d5c7259b8e42e851dc.jpg',
+        uri: 'https://images.pexels.com/photos/716398/pexels-photo-716398.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       }}
       style={styles.container}>
       {/* <StatusBar barStyle={'light-content'} backgroundColor={'blue'} /> */}
       <View style={styles.flatListView}>
         <Text style={styles.textStyle}>Current Login user </Text>
         {user.map(item => (
-          <View style={styles.currentUserView}>
+          <View style={styles.currentUserView} key={auth().currentUser.uid}>
             <Text style={styles.textStyle1}>ID: {auth().currentUser.uid}</Text>
             <Text style={styles.textStyle1}>Name: {item?.name}</Text>
             <Text style={styles.textStyle1}>Phone: {item?.phone}</Text>
