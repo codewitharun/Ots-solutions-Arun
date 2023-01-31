@@ -87,6 +87,17 @@ function MyTabs(props) {
           tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15},
         }}
       />
+      <Tab.Screen
+        name={Routes.Practice}
+        component={screens.Practice}
+        options={{
+          tabBarIcon: ({color, size}) => {
+            return <Icon name="face-man-profile" size={size} color={color} />;
+          },
+          tabBarStyle: {backgroundColor: 'black'},
+          tabBarLabelStyle: {fontWeight: 'bold', fontSize: 15},
+        }}
+      />
     </Tab.Navigator>
   );
 }

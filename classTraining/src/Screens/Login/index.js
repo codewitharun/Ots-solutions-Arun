@@ -177,17 +177,25 @@ const Login = ({navigation}) => {
       <CustomButton
         name={'Google SignIn'}
         handlePress={() => {
-          onGoogleButtonPress().then(async () => {
-            console.log(auth().currentUser.email);
-            await firestore()
-              .collection('Users')
-              .doc(auth().currentUser.uid)
-              .set({
-                name: auth().currentUser?.displayName,
-                phone: 3453456456,
-                email: auth().currentUser?.email,
-              });
-          });
+          onGoogleButtonPress()
+            .then(async () => {
+              try {
+                console.log(auth().currentUser?.email);
+                await firestore()
+                  .collection('Users')
+                  .doc(auth().currentUser?.uid)
+                  .set({
+                    name: auth().currentUser?.displayName,
+                    phone: 3453456456,
+                    email: auth().currentUser?.email,
+                  });
+              } catch (error) {
+                console.log('Error from google signIn=====>>>>>>>', error);
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
         }}
       />
     </ImageBackground>

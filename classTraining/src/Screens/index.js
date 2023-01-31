@@ -6,3 +6,4 @@ export {default as Splash} from './Splash';
 export {default as BottomTab} from '../CustomBottomTab';
 export {default as Users} from './Users';
 export {default as SendDataToFirestore} from './FirestorePractice';
+export {default as Practice} from './Practice';

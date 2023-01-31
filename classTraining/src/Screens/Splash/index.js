@@ -36,7 +36,7 @@ const Splash = props => {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (initializing)
+  if (initializing) {
     return (
       <SafeAreaView>
         <ImageBackground
@@ -54,6 +54,7 @@ const Splash = props => {
         </ImageBackground>
       </SafeAreaView>
     );
+  }
 
   if (!user) {
     return <Login navigation={props.navigation} />;

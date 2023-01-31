@@ -77,8 +77,7 @@ const Dashboard = props => {
       }}
       blurRadius={4}
       style={styles.container}>
-  
-      {location ? (
+  {location ? (
         <View style={styles.locationView}>
           <Text style={styles.locTextColor}>you are here</Text>
           <Text style={styles.locTextColor}>Lat:{location.latitude}</Text>

@@ -11,4 +11,5 @@ export const Routes = {
   About: 'About',
   Chat: 'Chat',
   Notification: 'Notification',
+  Practice: 'Practice',
 };
