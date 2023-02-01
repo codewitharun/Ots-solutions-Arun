@@ -15,6 +15,7 @@ const Ring = ({delay}) => {
   const ringStyle = useAnimatedStyle(() => {
     return {
       opacity: 0.8 - ring.value,
+
       transform: [
         {
           scale: interpolate(ring.value, [0, 1], [0, 4]),

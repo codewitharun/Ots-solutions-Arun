@@ -40,9 +40,9 @@ const Splash = props => {
     return (
       <SafeAreaView>
         <ImageBackground
-          resizeMode="cover"
+          resizeMode="repeat"
           source={{
-            uri: 'https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
+            uri: 'https://c4.wallpaperflare.com/wallpaper/551/801/266/map-world-map-wallpaper-preview.jpg',
           }}
           style={styles.container}>
           {/* <View style={styles.activityView}> */}

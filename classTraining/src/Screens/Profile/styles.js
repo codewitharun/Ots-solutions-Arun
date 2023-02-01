@@ -49,4 +49,14 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     borderRadius: 10,
   },
+  modalView: {
+    height: height * 0.3,
+    width: '100%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  modalText: {
+    color: 'black',
+  },
 });

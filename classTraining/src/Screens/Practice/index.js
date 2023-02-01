@@ -1,103 +1,52 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  Pressable,
+  Alert,
+  Switch,
+  
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import * as Progress from 'react-native-progress';
-import Ring from '../../CustomComponents/Ring';
+
+import DropDownPicker from 'react-native-dropdown-picker';
+
 const Practice = ({navigation}) => {
-  const [progress, setProgress] = useState(0);
-  const [indeterminate, setIntermediate] = useState(true);
-
-  useEffect(() => {
-    animate();
-    // console.log(progress, indeterminate);
-  }, []);
-
-  function animate() {
-    let progress = 0;
-
-    setProgress(progress);
-    setTimeout(() => {
-      // this.setState({indeterminate: false});
-      setIntermediate(false);
-
-      setInterval(() => {
-        progress += Math.random() / 5;
-        if (progress > 1) {
-          progress = 1;
-        }
-        // this.setState({progress});
-        setProgress(progress);
-      }, 500);
-    }, 1500);
-  }
-
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [items, setItems] = useState([
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'},
+  ]);
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>Progress Example</Text>
-      <Progress.Bar
-        style={styles.progress}
-        progress={progress}
-        indeterminate={indeterminate}
-      />
-      <View style={styles.circles}>
-        <Progress.Circle
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
+      {/* <View style={styles.centeredView}>
+        <WebView
+          // style={{width: '100%'}}
+          source={{uri: 'https://codewitharun.github.io/'}}
         />
-        <Progress.Circle
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
+      </View> */}
+      <View style={styles.centeredView}>
+        <DropDownPicker
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
         />
+        <Switch
+          trackColor={{false: '#767577', true: '#81b0ff'}}
+          thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+        <Text>{value}</Text>
       </View>
-      <View style={styles.circles}>
-        <Progress.Circle
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
-        />
-        <Progress.Circle
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
-        />
-        <Progress.Circle
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
-        />
-        <Progress.Pie
-          style={styles.progress}
-          progress={progress}
-          indeterminate={indeterminate}
-        />
-        <Progress.Circle
-          style={styles.progress}
-          // fill={'#F44336'}
-          progress={progress}
-          indeterminate={indeterminate}
-          direction="counter-clockwise"
-        />
-      </View>
-      <View style={styles.circles}>
-        <Progress.CircleSnail style={styles.progress} color={'#F44336'} />
-        <Progress.CircleSnail
-          style={styles.progress}
-          color={['#F44336', '#2196F3', '#009688']}
-        />
-      </View>
-      <View style={styles.circles}>
-        <Progress.CircleSnail style={styles.progress} color={'#F44336'} />
-        <Progress.CircleSnail
-          style={styles.progress}
-          color={['#F44336', '#2196F3', '#009688']}
-        />
-        <Ring delay={0} />
-        <Ring delay={1000} />
-        <Ring delay={2000} />
-        <Ring delay={3000} />
-      </View>
-      <Ring />
     </View>
   );
 };
@@ -108,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    // backgroundColor: 'black',
     paddingVertical: 20,
   },
   welcome: {
@@ -123,5 +72,10 @@ const styles = StyleSheet.create({
   },
   progress: {
     margin: 10,
+  },
+  centeredView: {
+    height: '100%',
+    width: '80%',
+    // backgroundColor: 'red',
   },
 });
