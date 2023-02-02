@@ -6,7 +6,6 @@ import {
   Pressable,
   Alert,
   Switch,
-  
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 
@@ -44,8 +43,15 @@ const Practice = ({navigation}) => {
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={isEnabled}
+          
         />
         <Text>{value}</Text>
+
+        {value == 'apple' ? (
+          <Text style={{color: 'green'}}>True</Text>
+        ) : (
+          <Text style={{color: 'red'}}>False</Text>
+        )}
       </View>
     </View>
   );
