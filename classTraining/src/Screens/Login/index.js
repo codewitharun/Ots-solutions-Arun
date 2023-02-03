@@ -147,7 +147,7 @@ const Login = ({navigation}) => {
         throw 'User cancelled the login process';
       }
 
-      // Once signed in, get the users AccesToken
+      // Once signed in, get the users AccessToken
       const data = await AccessToken.getCurrentAccessToken();
       console.log('data', data);
       if (!data) {
@@ -232,7 +232,7 @@ const Login = ({navigation}) => {
         }}
       />
       <CustomButton
-        name={'Facebook Signin'}
+        name={'Facebook SignIn'}
         handlePress={() => onFacebookButtonPress()}
       />
     </ImageBackground>
