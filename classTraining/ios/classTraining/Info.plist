@@ -87,5 +87,21 @@
 <string>This app needs to get your Photos access...</string>
 <key>NSCameraUsageDescription</key>
 <string>This app needs your camera access</string>
+
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb931303318052844</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>931303318052844</string>
+<key>FacebookClientToken</key>
+<string>5acb32cb4819a94382e74d7912459cb1</string>
+<key>FacebookDisplayName</key>
+<string>reactDemo</string>
 </dict>
 </plist>

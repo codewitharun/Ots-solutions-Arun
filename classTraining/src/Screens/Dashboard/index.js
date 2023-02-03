@@ -77,7 +77,7 @@ const Dashboard = props => {
       }}
       blurRadius={4}
       style={styles.container}>
-  {location ? (
+      {location ? (
         <View style={styles.locationView}>
           <Text style={styles.locTextColor}>you are here</Text>
           <Text style={styles.locTextColor}>Lat:{location.latitude}</Text>
@@ -99,9 +99,17 @@ const Dashboard = props => {
           />
         </View>
       )}
-      {image && image?.assets && (
+      {image && image?.assets ? (
         <View style={styles.imageView}>
           <Avatar avatar={image.assets[0].uri} />
+        </View>
+      ) : (
+        <View style={styles.imageView}>
+          <Avatar
+            avatar={
+              'https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg'
+            }
+          />
         </View>
       )}
       {loading ? (

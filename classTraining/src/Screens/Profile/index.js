@@ -48,6 +48,7 @@ const Profile = ({navigation}) => {
       .then(querySnapshot => {
         let otherUsers = [];
         let currentUser = [];
+
         // console.log('Total users: ', querySnapshot.size);
         setCount(querySnapshot.size);
         querySnapshot.forEach(data => {
@@ -71,7 +72,8 @@ const Profile = ({navigation}) => {
         //     documentSnapshot.data(),
         //   );
         // });
-      });
+      })
+      .catch(err => console.log('error while getting data', err));
   }
 
   async function signOutFunc() {
@@ -97,14 +99,22 @@ const Profile = ({navigation}) => {
       {/* <StatusBar barStyle={'light-content'} backgroundColor={'blue'} /> */}
       <View style={styles.flatListView}>
         <Text style={styles.textStyle}>Current Login user </Text>
-        {user.map(item => (
-          <View style={styles.currentUserView} key={auth().currentUser.uid}>
-            <Text style={styles.textStyle1}>ID: {auth().currentUser.uid}</Text>
-            <Text style={styles.textStyle1}>Name: {item?.name}</Text>
-            <Text style={styles.textStyle1}>Phone: {item?.phone}</Text>
-            <Text style={styles.textStyle1}>Email: {item?.email}</Text>
-          </View>
-        ))}
+        <View style={styles.currentUserView} key={auth().currentUser.uid}>
+          <Text style={styles.textStyle1}>ID: {auth().currentUser.uid}</Text>
+          <Text style={styles.textStyle1}>
+            Name: {auth().currentUser.displayName}
+          </Text>
+          <Text style={styles.textStyle1}>
+            Phone: {auth().currentUser.phoneNumber}
+          </Text>
+          <Text style={styles.textStyle1}>
+            Email: {auth().currentUser.email}
+          </Text>
+          <Text style={styles.textStyle1}>
+            Provider: {auth().currentUser.providerData.toString()}
+          </Text>
+        </View>
+
         <Text style={styles.textStyle}>other users in firestore</Text>
         <FlatList
           style={styles.flatListStyle}
@@ -121,7 +131,6 @@ const Profile = ({navigation}) => {
             );
           }}
         />
-
         <Modal
           isVisible={isModalVisible}
           hasBackdrop={true}

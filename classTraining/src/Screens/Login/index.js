@@ -22,6 +22,7 @@ import {LoginUser} from '../../Redux/Actions/Actions';
 import messaging from '@react-native-firebase/messaging';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import firestore from '@react-native-firebase/firestore';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -133,6 +134,38 @@ const Login = ({navigation}) => {
       console.log(error);
     }
   }
+
+  async function onFacebookButtonPress() {
+    // Attempt login with permissions
+    try {
+      const result = await LoginManager.logInWithPermissions([
+        'public_profile',
+        'email',
+      ]);
+
+      if (result.isCancelled) {
+        throw 'User cancelled the login process';
+      }
+
+      // Once signed in, get the users AccesToken
+      const data = await AccessToken.getCurrentAccessToken();
+      console.log('data', data);
+      if (!data) {
+        throw 'Something went wrong obtaining access token';
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data.accessToken,
+      );
+      console.log(facebookCredential);
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(facebookCredential);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -197,6 +230,10 @@ const Login = ({navigation}) => {
               console.log(error);
             });
         }}
+      />
+      <CustomButton
+        name={'Facebook Signin'}
+        handlePress={() => onFacebookButtonPress()}
       />
     </ImageBackground>
   );

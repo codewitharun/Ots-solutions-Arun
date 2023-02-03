@@ -23,7 +23,7 @@ const Splash = props => {
   // Handle user state changes
   function onAuthStateChanged(user) {
     setUser(user);
-    // console.log(user);
+    // console.log(user.providerData);
     if (initializing)
       setTimeout(() => {
         setInitializing(false);

@@ -57,6 +57,7 @@
 		4C263E89E93A455E5B930902 /* Pods_classTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_classTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-classTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classTraining.release.xcconfig"; path = "Target Support Files/Pods-classTraining/Pods-classTraining.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-classTraining-classTrainingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classTraining-classTrainingTests.debug.xcconfig"; path = "Target Support Files/Pods-classTraining-classTrainingTests/Pods-classTraining-classTrainingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E566A01298BC6CC005B786D /* classTraining.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = classTraining.entitlements; path = classTraining/classTraining.entitlements; sourceTree = "<group>"; };
 		6E7E571329812BF2001C6178 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		6E7E571429812BF2001C6178 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		6E7E571529812BF2001C6178 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		13B07FAE1A68108700A75B9A /* classTraining */ = {
 			isa = PBXGroup;
 			children = (
+				6E566A01298BC6CC005B786D /* classTraining.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -538,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = classTraining/classTraining.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = classTraining/Info.plist;
@@ -564,6 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = classTraining/classTraining.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = classTraining/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

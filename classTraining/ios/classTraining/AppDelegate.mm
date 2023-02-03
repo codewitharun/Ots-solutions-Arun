@@ -3,7 +3,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
+#import <FBSDKCoreKit/FBSDKCoreKit-swift.h>
 #import <React/RCTAppSetupUtils.h>
 
 #if RCT_NEW_ARCH_ENABLED
@@ -31,7 +31,8 @@
 {
   [FIRApp configure];
   RCTAppSetupPrepareApp(application);
-
+ [[FBSDKApplicationDelegate sharedInstance] application:application
+                       didFinishLaunchingWithOptions:launchOptions];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
 #if RCT_NEW_ARCH_ENABLED
@@ -103,7 +104,14 @@
 {
   return RCTAppSetupDefaultModuleFromClass(moduleClass);
 }
-
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [[FBSDKApplicationDelegate sharedInstance]application:app
+                                                      openURL:url
+                                                      options:options];
+}
 #endif
 
 @end
